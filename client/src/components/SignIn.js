@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/user';
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-
 function SignUp() {
-    const history = useHistory
+    const history = useHistory();
+    const { user, setUser } = useContext(UserContext);
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Username needed to login."),
@@ -19,21 +20,21 @@ function SignUp() {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {console.log(values)
-            // fetch('/login', {
-            //     method: 'POST',
-            //     headers: {'Content-Type': 'application/json'},
-            //     body: JSON.stringify(values),
-            // })
-            //     .then((r) => {
-            //         if (r.ok) {
-            //             r.json()
-            //             .then((user) => {updateUser(user);
-            //             history.push('/');
-            //         })
-            //     } else {
-            //         console.log("Fubar");
-            //     }
-            // })
+            fetch('/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(values),
+            })
+                .then((r) => {
+                    if (r.ok) {
+                        r.json()
+                        .then((user) => {setUser(user);
+                        history.push('/');
+                        })
+                    } else {
+                        console.log("Fubar");
+                }
+            })
         }
     })
 

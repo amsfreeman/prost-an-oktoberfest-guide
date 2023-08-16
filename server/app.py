@@ -6,6 +6,10 @@ from config import app, db, api
 
 from models import User
 
+@app.route('/')
+def index():
+    return '<h1>Prost! An Oktoberfest Guide/h1>'
+
 class Users(Resource):
     def post(self):
         data = request.get_json()
@@ -32,7 +36,7 @@ class Users(Resource):
 api.add_resource(Users, '/users')
 
 #LOGIN the User
-@app.route('/login', methods=["POST"])
+@app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
 

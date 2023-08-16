@@ -16,7 +16,7 @@ class User(db.Model, SerializerMixin):
 
     _password_hash = db.Column(db.String)
 
-    serialize_rules = ('-_password-hash')
+    serialize_rules = ('-_password_hash',)
 
     @property 
     def password_hash(self):
