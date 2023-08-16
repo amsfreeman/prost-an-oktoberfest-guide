@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { Router } from "react-router-dom/cjs/react-router-dom.min";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
+import Home from "./Home";
+import NavBar from "./NavBar";
+import About from "./About";
+import TentsList from "./TentsList";
+import TentDetail from "./TentDetail"
+
 
 function App() {
   return (
@@ -13,7 +21,7 @@ function App() {
         <Route path = '/oktoberfest_about' >
           <About />
         </Route>
-        <Route path = '/oktoberfest_tents'>
+        <Route exact path = '/oktoberfest_tents'>
           <TentsList />
         </Route>
         <Route path = '/oktoberfest_tents/:id'>
