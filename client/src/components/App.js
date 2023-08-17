@@ -6,8 +6,10 @@ import Home from "./Home";
 import NavBar from "./NavBar";
 import About from "./About";
 import TentsList from "./TentsList";
-import TentDetail from "./TentDetail";
+import AllTents from "./AllTents";
+import SingleTentDetail from "./SingleTentDetail";
 import { UserContext } from "../context/user";
+
 
 function App() {
   const [tentsArray, setTentsArray] = useState([])
@@ -48,7 +50,7 @@ function App() {
           <TentsList tentsArray={tentsArray}/>
         </Route>
         <Route path = '/oktoberfest_tents/:id'>
-          <TentDetail />
+          <SingleTentDetail />
         </Route>
         <Route path = '/sign_in'>
           <SignIn />

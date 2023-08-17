@@ -24,6 +24,7 @@ function NavBar() {
                     <li className='nav-links'><a href='/oktoberfest_tents'>All Tents</a></li>
                 </ul>
             </div>
+            <h1>Prost! An Oktoberfest Guide</h1>
             {user ? 
             <div>
                 <ul>
