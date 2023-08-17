@@ -1,3 +1,9 @@
+# If decide to mess with images -> start with pip install Pillow
+from PIL import Image
+import os
+
+image_path_1 = os.path.join(os.path.dirname(__file__), 'assets', 'Armbrustschuetzenzelt1.jpg')
+
 # Standard library imports
 from random import randint, choice as rc
 
@@ -8,13 +14,14 @@ from faker import Faker
 from app import app
 
 # Add models imports here
-from models import db, User
+from models import db, User, Tent
 
 if __name__ == '__main__':
     fake = Faker()
     with app.app_context():
         print("Clearing database...")
         User.query.delete()
+        Tent.query.delete()
 
         print("Starting seed...")
 
@@ -30,6 +37,13 @@ if __name__ == '__main__':
 
         users = [u1, u2, u3, u4, u5 ,u6, u7]
         db.session.add_all(users)
+        db.session.commit()
+
+        print("Seeding tents...")
+        t1 = Tent(name = 'Armbrustschützenzelt', capacity = '7460', first_year = '1895', beer_sold = 'Paulaner', image = '', details = "Our tent’s name has a lengthy history extending back to 1895, when the guild of crossbowmen “Winzerer Fähndl” constructed the first tent on the “Wiesn” in order to host shooters and visitors and to conduct championships.")
+
+        tents = [t1]
+        db.session.add_all(tents)
         db.session.commit()
 
         print("Done seeding!")

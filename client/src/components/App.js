@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Switch, Route} from "react-router-dom";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
@@ -10,15 +10,22 @@ import TentDetail from "./TentDetail";
 import { UserContext } from "../context/user";
 
 function App() {
-
+  const [tentsArray, setTentsArray] = useState([])
   const { setUser } = useContext(UserContext);
 
-  // // TODO useEffect dependancy issue
-  // useEffect(() => {
-  //   fetchUser()
-  // }, [])
+  // TODO useEffect dependancy issue
+  useEffect(() => {
+    fetchTents();
+    fetchUser();
+  }, [])
 
-  function fetchUser() {
+  const fetchTents = () => {
+    fetch('/oktoberfest_tents')
+      .then(r => r.json())
+      .then(tents => setTentsArray(tents))
+  }
+
+  const fetchUser = () => {
     fetch("/authorized")
       .then((r) => {
         if (r.ok) {
@@ -38,7 +45,7 @@ function App() {
           <About />
         </Route>
         <Route exact path = '/oktoberfest_tents'>
-          <TentsList />
+          <TentsList tentsArray={tentsArray}/>
         </Route>
         <Route path = '/oktoberfest_tents/:id'>
           <TentDetail />

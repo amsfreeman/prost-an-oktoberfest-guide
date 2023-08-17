@@ -4,7 +4,7 @@ import ipdb
 
 from config import app, db, api
 
-from models import User
+from models import User, Tent
 
 @app.route('/')
 def index():
@@ -34,6 +34,15 @@ class Users(Resource):
         return response
 
 api.add_resource(Users, '/users')
+
+class Tents(Resource):
+    def get(self):
+        tents = [t.to_dict() for t in Tent.query.all()]
+
+        response = make_response(tents, 200)
+        return response
+
+api.add_resource(Tents, '/oktoberfest_tents')
 
 #LOGIN the User
 @app.route('/login', methods=['POST'])

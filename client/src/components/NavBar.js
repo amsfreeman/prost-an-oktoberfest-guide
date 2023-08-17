@@ -34,7 +34,7 @@ function NavBar() {
             :
             <div>
                 <ul>
-                    <li className='user-links'><a href='/sign_in' className='signin-link'>Log In</a></li>
+                    <li className='user-links'><a href='/sign_in' className='signin-link'>Sign In</a></li>
                     <li className='user-links'><a href='/sign_up' className='signup-link'>Sign Up</a></li>
                 </ul>
             </div>
