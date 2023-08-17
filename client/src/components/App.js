@@ -1,18 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
-import { Router } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useEffect, useContext } from "react";
+import { Switch, Route} from "react-router-dom";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Home from "./Home";
 import NavBar from "./NavBar";
 import About from "./About";
 import TentsList from "./TentsList";
-import TentDetail from "./TentDetail"
-
+import TentDetail from "./TentDetail";
+import { UserContext } from "../context/user";
 
 function App() {
+
+  const { setUser } = useContext(UserContext);
+
+  // // TODO useEffect dependancy issue
+  // useEffect(() => {
+  //   fetchUser()
+  // }, [])
+
+  function fetchUser() {
+    fetch("/authorized")
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        }
+      })
+  }
+
   return (
-    <div className="App">
+    <div className='App'>
       <NavBar />
       <Switch>
         <Route exact path = '/'>

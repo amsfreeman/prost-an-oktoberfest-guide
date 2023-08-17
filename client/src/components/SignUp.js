@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../context/user';
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 function SignUp() {
     const history = useHistory();
+    const { setUser } = useContext(UserContext);
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Username is required to sign up"),
@@ -22,21 +24,21 @@ function SignUp() {
         validationSchema: formSchema,
         onSubmit: (values) => {
             console.log(values)
-            // fetch('/users', {
-            //     method: 'POST',
-            //     headers: {'Content-Type': 'application/json'},
-            //     body: JSON.stringify(values)
-            // }) 
-            //     .then((r) => {
-            //         if (r.ok) {
-            //             r.json()
-            //             .then((user) => {updateUser(user);
-            //             history.push('/');
-            //             })
-            //         } else {
-            //             console.log('Whiskey Tango Foxtrot');
-            //         }
-            //     })
+            fetch('/users', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(values)
+            }) 
+                .then((r) => {
+                    if (r.ok) {
+                        r.json()
+                        .then((user) => {setUser(user);
+                        history.push('/');
+                        })
+                    } else {
+                        console.log('Whiskey Tango Foxtrot');
+                    }
+                })
         }
     })
 
@@ -75,6 +77,7 @@ function SignUp() {
                 />
                 <input 
                     type="submit"
+                    value="Sign Up"
                 />
             </form>
         </div>
