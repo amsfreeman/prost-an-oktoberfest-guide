@@ -6,7 +6,6 @@ import Home from "./Home";
 import NavBar from "./NavBar";
 import About from "./About";
 import TentsList from "./TentsList";
-import AllTents from "./AllTents";
 import SingleTentDetail from "./SingleTentDetail";
 import { UserContext } from "../context/user";
 
@@ -15,11 +14,11 @@ function App() {
   const [tentsArray, setTentsArray] = useState([])
   const { setUser } = useContext(UserContext);
 
-  // TODO useEffect dependancy issue
-  useEffect(() => {
-    fetchTents();
-    fetchUser();
-  }, [])
+  // // TODO useEffect dependancy issue -> Not allowing me to LOGOUT?
+  // useEffect(() => {
+  //   fetchTents();
+  //   fetchUser();
+  // }, [])
 
   const fetchTents = () => {
     fetch('/oktoberfest_tents')
@@ -49,7 +48,7 @@ function App() {
         <Route exact path = '/oktoberfest_tents'>
           <TentsList tentsArray={tentsArray}/>
         </Route>
-        <Route path = '/oktoberfest_tents/:id'>
+        <Route path ='/oktoberfest_tents/:id'>
           <SingleTentDetail />
         </Route>
         <Route path = '/sign_in'>

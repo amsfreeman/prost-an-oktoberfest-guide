@@ -16,7 +16,6 @@ function TentsList({tentsArray}) {
         />
         )
     })
-    console.log(tentComponents[0])
     return(
         <div>
             {tentComponents}
