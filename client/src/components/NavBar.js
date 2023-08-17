@@ -1,10 +1,10 @@
-import { Link, useHistory, NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/user';
 
 function NavBar() {
-    const {user, setUser} = useContext(UserContext)
     const history = useHistory()
+    const {user, setUser} = useContext(UserContext)
 
     const handleClick = () => {
         fetch('/logout', {
@@ -12,6 +12,7 @@ function NavBar() {
         }).then(() => {
             setUser(null)
         })
+        history.push('/')
     }
 
     return (

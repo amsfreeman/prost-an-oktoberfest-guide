@@ -13,10 +13,10 @@ function App() {
 
   const { setUser } = useContext(UserContext);
 
-  // TODO useEffect dependancy issue
-  useEffect(() => {
-    fetchUser()
-  }, [])
+  // // TODO useEffect dependancy issue
+  // useEffect(() => {
+  //   fetchUser()
+  // }, [])
 
   function fetchUser() {
     fetch("/authorized")

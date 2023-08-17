@@ -67,8 +67,8 @@ def authorize():
 #LOGOUT the User
 @app.route('/logout', methods=["DELETE"])
 def logout():
-    session['user.id']=None
-    response = make_response({}, 204)
+    session['user.id'] = None
+    response = make_response('', 204)
     return response
 
 if __name__ == '__main__':
