@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function SignUp({updateUser}) {
+function SignUp() {
     const history = useHistory();
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Username is required to sign up"),
@@ -77,6 +77,7 @@ function SignUp({updateUser}) {
                 />
                 <input 
                     type="submit"
+                    value="Sign Up"
                 />
             </form>
         </div>

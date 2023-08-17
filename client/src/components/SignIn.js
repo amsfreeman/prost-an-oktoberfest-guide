@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../context/user';
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
@@ -6,7 +6,7 @@ import * as yup from "yup";
 
 function SignUp() {
     const history = useHistory();
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Username needed to login."),
@@ -58,6 +58,7 @@ function SignUp() {
                 />
                 <input 
                     type="submit"
+                    value="Sign In"
                 />
             </form>
         </>
