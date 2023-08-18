@@ -13,24 +13,34 @@ code {
 }
 
 .nav-links {
-  display: inline;
   float: left;
-}
-
-.user-links {
-  display:inline;
-  float: right;
-}
-
-a {
   display: block;
   padding: 8px;
   background-color: #47956a;
 }
 
-.navbar-light {
-  background-color: white;
+.user-links {
+  float:right;
+  display: block;
+  padding: 8px;
+  margin-right: 10px;
+  background-color: #47956a;
 }
 
+.title {
+  text-align: center;
+}
 
+.nav-container {
+  justify-content: space-evenly;
+}
 
+.home-image {
+  justify-self: center;
+  height: 40rem;
+  width: auto;
+}
+
+.home-detail-container {
+  text-align: center;
+}

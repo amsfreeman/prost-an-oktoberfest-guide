@@ -14,11 +14,10 @@ function App() {
   const [tentsArray, setTentsArray] = useState([])
   const { setUser } = useContext(UserContext);
 
-  // // TODO useEffect dependancy issue -> Not allowing me to LOGOUT?
-  // useEffect(() => {
-  //   fetchTents();
-  //   fetchUser();
-  // }, [])
+  useEffect(() => {
+    fetchTents();
+    fetchUser()
+  }, [])
 
   const fetchTents = () => {
     fetch('/oktoberfest_tents')
@@ -33,7 +32,7 @@ function App() {
           r.json().then((user) => setUser(user));
         }
       })
-  }
+  }  
 
   return (
     <div className='App'>
