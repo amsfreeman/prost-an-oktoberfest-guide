@@ -27,7 +27,7 @@ function NavBar() {
                 <h1 className='title'>Prost! An Oktoberfest Guide</h1>
             {user ? 
                 <ul>
-                    <li className='user-links'><p>Servus, {user.username}</p></li>
+                    <li className='user-links'><h6 className='logged-in-user'>Servus, {user.username}</h6></li>
                     <li className='user-links'><a href='/' className='signout-link' onClick={handleClick}>Logout</a></li>
                 </ul>
             :

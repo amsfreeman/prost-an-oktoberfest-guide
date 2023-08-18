@@ -8,9 +8,9 @@ function AllTents({id, name, image}) {
     }
 
     return (
-        <div className="card" style={{width: "20rem"}}>
+        <div className="card">
+        <img src={image} alt={name} className="card-img-top"/>
             <div className="card-body">
-                <img src={image} alt={name} className="card-img-top"/>
                 <h3 className="card-title">{name}</h3>
                 <button onClick={handleClick} className="btn btn-primary">More Details!</button>
             </div>

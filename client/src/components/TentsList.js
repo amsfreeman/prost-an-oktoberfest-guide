@@ -17,8 +17,10 @@ function TentsList({tentsArray}) {
         )
     })
     return(
-        <div>
-            {tentComponents}
+        <div className="container">
+            <div className="col-md-4">
+                {tentComponents}
+            </div>
         </div>
     )
 }
