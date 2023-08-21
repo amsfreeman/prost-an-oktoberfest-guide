@@ -16,7 +16,7 @@ function NavBar() {
     }
 
     return (
-        <nav>
+        <nav className='nav-container'>
             <div>
                 <ul>
                     <li className='nav-links'><a href='/'>Home</a></li>
@@ -24,20 +24,17 @@ function NavBar() {
                     <li className='nav-links'><a href='/oktoberfest_tents'>All Tents</a></li>
                 </ul>
             </div>
+                <h1 className='title'>Prost! An Oktoberfest Guide</h1>
             {user ? 
-            <div>
                 <ul>
-                    <li className='user-links'><h4>Servus, {user.username}</h4></li>
+                    <li className='user-links'><h6 className='logged-in-user'>Servus, {user.username}</h6></li>
                     <li className='user-links'><a href='/' className='signout-link' onClick={handleClick}>Logout</a></li>
                 </ul>
-            </div>
             :
-            <div>
                 <ul>
-                    <li className='user-links'><a href='/sign_in' className='signin-link'>Log In</a></li>
+                    <li className='user-links'><a href='/sign_in' className='signin-link'>Sign In</a></li>
                     <li className='user-links'><a href='/sign_up' className='signup-link'>Sign Up</a></li>
                 </ul>
-            </div>
             }
         </nav>
     )

@@ -4,7 +4,7 @@ import ipdb
 
 from config import app, db, api
 
-from models import User
+from models import User, Tent
 
 @app.route('/')
 def index():
@@ -34,6 +34,28 @@ class Users(Resource):
         return response
 
 api.add_resource(Users, '/users')
+
+class Tents(Resource):
+    def get(self):
+        tents = [t.to_dict() for t in Tent.query.all()]
+
+        response = make_response(tents, 200)
+        return response
+api.add_resource(Tents, '/oktoberfest_tents')
+
+class TentById(Resource):
+    def get(self, id):
+        tent = Tent.query.filter_by(id=id).first()
+
+        if tent:
+            tent_dict = tent.to_dict()
+            response = make_response(tent_dict, 200)
+            return response
+        else:
+            response = make_response({'Error': 'Oktoberfest Tent not found.'}, 404)
+            return response
+
+api.add_resource(TentById, '/oktoberfest_tents/<int:id>')
 
 #LOGIN the User
 @app.route('/login', methods=['POST'])

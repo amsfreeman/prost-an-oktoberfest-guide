@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,24 +10,123 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+body {
+  background-color: #76949F;
 }
 
 .nav-links {
-  display: inline;
   float: left;
+  display: block;
+  align-items: center;
+  padding: 8px;
+  background-color: #75a093;
+  border: rgb(119, 53, 53) solid 1px;
 }
 
 .user-links {
-  display:inline;
-  float: right;
-}
-
-a {
+  float:right;
   display: block;
   padding: 8px;
-  background-color: #47956a;
+  background-color: #75a093;
+  border: rgb(119, 53, 53) solid 1px;
 }
 
+.logged-in-user {
+  float: right;
+  display: block;
+  margin-bottom: 3px;
+  background-color: #75a093;
+  border: rgb(119, 53, 53) solid 1px;
+}
 
+.title {
+  text-align: center;
+  color: antiquewhite;
+  font-size: 40px;
+}
 
+nav {
+  height: 100px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  border: rgb(119, 53, 53) solid 1px;
+  background-color: #6B7285;
+}
 
+.home-image {
+  justify-self: center;
+  height: 40rem;
+  width: auto;
+}
+
+.home-detail-container {
+  padding-top: 10px;
+  text-align: center;
+  color: antiquewhite;
+}
+
+.tent-card {
+  text-align: center;
+  border: #5f506b solid 1px;
+  padding: 1rem;
+  width: 20rem;
+  height: 20rem;
+  display: center;
+  margin: 1rem 2rem;
+  box-shadow: 2px 2px 5px 2px #5f506b;
+}
+
+.tent-card-container{
+  border: rgb(119, 53, 53) solid 1px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.tent-card-img-top {
+  justify-self: center;
+  height: 10rem;
+  width: auto;
+}
+
+.tent-card-title {
+  color: #faf3e9;
+  padding-top: 10px;
+}
+
+.single-tent-card-container {
+  border: rgb(119, 53, 53) solid 1px;
+  display: flex;
+  justify-content: center;
+}
+
+.single-tent-card {
+  text-align: center;
+  border: #5f506b solid 1px;
+  padding: 1rem;
+  width: 40rem;
+  height: 40rem;
+  display: center;
+  margin: 1rem 2rem;
+  box-shadow: 2px 2px 5px 2px #5f506b;
+}
+
+.single-tent-card-img-top {
+  justify-self: center;
+  height: 22rem;
+  width: auto;
+}
+
+.single-tent-card-title {
+  color: #faf3e9;
+  padding-top: 10px;
+}
+
+.single-tent-card-text {
+  color: #533747;
+  padding-right: 100px;
+  padding-left: 100px;
+}
