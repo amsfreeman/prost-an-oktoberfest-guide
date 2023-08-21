@@ -43,5 +43,14 @@ class Tent(db.Model, SerializerMixin):
     image = db.Column(db.String)
     details = db.Column(db.String)
 
+class Visit(db.Model, SerializerMixin):
+    __tablename__ = 'visits'
+
+    id = db.Column(db.Integer, primary_key=True)
+    visit_rating = db.Column(db.Integer)
+    date = db.Column(db.Date)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    visit_id = db.Column(db.Integer, db.ForeignKey('visit.id'))
 
 
