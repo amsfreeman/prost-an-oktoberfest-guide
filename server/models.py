@@ -16,7 +16,7 @@ class User(db.Model, SerializerMixin):
 
     _password_hash = db.Column(db.String)
 
-    serialize_rules = ('-_password_hash',)
+    serialize_rules = ('-_password_hash', '-visits.user')
 
     @property 
     def password_hash(self):
@@ -31,6 +31,9 @@ class User(db.Model, SerializerMixin):
     
     def authenticate(self, password):
         return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
+    
+    visits = db.relationship('Visit', back_populates='user', cascade = 'all, delete-orphan')
+    tents = association_proxy('visits', 'tent')
 
 class Tent(db.Model, SerializerMixin):
     __tablename__ = 'tents'
@@ -43,6 +46,11 @@ class Tent(db.Model, SerializerMixin):
     image = db.Column(db.String)
     details = db.Column(db.String)
 
+    visits = db.relationship('Visit', back_populates='tent', cascade = 'all, delete-orphan')
+    users = association_proxy('visits', 'user')
+
+    serialize_rules = ('-visits.tent',)
+
 class Visit(db.Model, SerializerMixin):
     __tablename__ = 'visits'
 
@@ -51,6 +59,11 @@ class Visit(db.Model, SerializerMixin):
     date = db.Column(db.Date)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    visit_id = db.Column(db.Integer, db.ForeignKey('visit.id'))
+    visit_id = db.Column(db.Integer, db.ForeignKey('visits.id'))
+
+    user = db.relationship('User', back_populates= 'visits')
+    tent = db.relationship('Tent', back_populates='visits')
+
+    serialize_rules = ("-user.visits", "-tent.visits")
 
 

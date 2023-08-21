@@ -4,7 +4,7 @@ import ipdb
 
 from config import app, db, api
 
-from models import User, Tent
+from models import User, Tent, Visit
 
 @app.route('/')
 def index():
@@ -56,6 +56,77 @@ class TentById(Resource):
             return response
 
 api.add_resource(TentById, '/oktoberfest_tents/<int:id>')
+
+class Visits(Resource):
+    def get(self):
+        visits = [v.to_dict() for v in Visit.query.all()]
+
+        response = make_response(visits, 200)
+        return response
+    
+    def post(self):
+        data = request.get_json()
+
+        try:
+            new_visit = Visit(
+                visit_rating = data['visit_rating'],
+                date = data['date'],
+                user_id = data['user_id'],
+                tent_id = data['tent.id']
+            )
+        except ValueError as v_error:
+            response = make_response({'Errors': [str(v_error)]}, 400)
+            return response
+        
+        db.session.add(new_visit)
+        db.session.commit()
+
+        new_visit_dict = new_visit.to_dict()
+        response = make_response(new_visit_dict, 201)
+        return response
+    
+api.add_resource(Visits, '/oktoberfest_visits')
+
+class VisitById(Resource):
+    def patch(self, id):
+        visit_by_id = Visit.query.filter_by(id=id).first()
+
+        if not Visit:
+            response = make_response({"Error": "Visit not found"}, 404)
+            return response
+        
+        data = request.get_json()
+
+        for attr in data:
+            try:
+                setattr(visit_by_id, attr, data[attr])
+            except ValueError as v_error:
+                response = make_response({'Error': [str(v_error)]}, 400)
+        
+        db.session.commit()
+
+        visit_by_id_dict = visit_by_id.to_dict()
+
+        response = make_response(visit_by_id_dict, 202)
+        return response
+
+    def delete(self, id):
+        visit_to_delete = Visit.query.filter_by(id=id).first()
+
+        if not Visit:
+            response = make_response({"Error": "Visit not found"}, 404)
+            return response
+        
+        db.session.delete(visit_to_delete)
+        db.session.commit()
+
+        response = make_response({}, 204)
+        return response
+
+api.add_resource(VisitById, '/oktoberfest_visits/<int:id>')
+
+
+
 
 #LOGIN the User
 @app.route('/login', methods=['POST'])
