@@ -68,6 +68,65 @@ nav {
   color: antiquewhite;
 }
 
-.card {
+.tent-card {
+  text-align: center;
+  border: #5f506b solid 1px;
+  padding: 1rem;
+  width: 20rem;
+  height: 20rem;
+  display: center;
+  margin: 1rem 2rem;
+  box-shadow: 2px 2px 5px 2px #5f506b;
+}
+
+.tent-card-container{
+  border: rgb(119, 53, 53) solid 1px;
+  display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.tent-card-img-top {
+  justify-self: center;
+  height: 10rem;
+  width: auto;
+}
+
+.tent-card-title {
+  color: #faf3e9;
+  padding-top: 10px;
+}
+
+.single-tent-card-container {
+  border: rgb(119, 53, 53) solid 1px;
+  display: flex;
+  justify-content: center;
+}
+
+.single-tent-card {
+  text-align: center;
+  border: #5f506b solid 1px;
+  padding: 1rem;
+  width: 40rem;
+  height: 40rem;
+  display: center;
+  margin: 1rem 2rem;
+  box-shadow: 2px 2px 5px 2px #5f506b;
+}
+
+.single-tent-card-img-top {
+  justify-self: center;
+  height: 22rem;
+  width: auto;
+}
+
+.single-tent-card-title {
+  color: #faf3e9;
+  padding-top: 10px;
+}
+
+.single-tent-card-text {
+  color: #533747;
+  padding-right: 100px;
+  padding-left: 100px;
 }
