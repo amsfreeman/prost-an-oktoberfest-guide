@@ -3,16 +3,41 @@ body {
 }
 
 .nav-links {
-  float: left;
+  float: inline-start;
   display: block;
-  align-items: center;
   padding: 8px;
   background-color: #75a093;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
-.user-links {
-  float:right;
+.user-links-1 {
+  float: inline-start;
+  display: block;
+  padding: 8px;
+  margin-top: 1.6rem;
+  background-color: #75a093;
+  /* border: rgb(119, 53, 53) solid 1px; */
+}
+
+.user-links-2 {
+  float: inline-start;
+  display: block;
+  padding: 8px;
+  background-color: #75a093;
+  /* border: rgb(119, 53, 53) solid 1px; */
+}
+
+.loggedin-links-1 {
+  float: inline-start;
+  display: block;
+  padding: 8px;
+  margin-top: 1.6rem;
+  background-color: #75a093;
+  /* border: rgb(119, 53, 53) solid 1px; */
+}
+
+.loggedin-links-2 {
+  float: inline-start;
   display: block;
   padding: 8px;
   background-color: #75a093;
@@ -27,14 +52,21 @@ body {
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
-.title {
+.title-1 {
+  text-align: center;
+  color: antiquewhite;
+  font-size: 40px;
+  padding-top: 2rem;
+}
+
+.title-2 {
   text-align: center;
   color: antiquewhite;
   font-size: 40px;
 }
 
 nav {
-  height: 100px;
+  height: 240px;
   padding-top: 20px;
   display: flex;
   justify-content: space-evenly;

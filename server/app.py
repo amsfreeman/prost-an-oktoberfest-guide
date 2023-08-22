@@ -7,10 +7,6 @@ from config import app, db, api
 
 from models import User, Tent, Visit
 
-@app.route('/')
-def index():
-    return '<h1>Prost! An Oktoberfest Guide/h1>'
-
 class Users(Resource):
     def post(self):
         data = request.get_json()
@@ -141,10 +137,10 @@ def login():
             response = make_response(user.to_dict(), 200)
             return response
         else:
-            response = make_response({"errors": "Password incorrect"}, 401)
+            response = make_response({"errors": ["Password incorrect, please try again."]}, 422)
             return response
     except:
-        response = make_response({"errors": "Username incorrect"}, 401)
+        response = make_response({"errors": ["Username incorrect, please try again."]}, 422)
         return response
 
 #KEEP the User logged in

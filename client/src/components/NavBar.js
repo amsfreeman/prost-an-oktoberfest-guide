@@ -35,16 +35,19 @@ function NavBar() {
                 </ul>
             }
             </div>
-                <h1 className='title'>Prost! An Oktoberfest Guide</h1>
+            <div>
+                <h1 className='title-1'>Prost!</h1>
+                <h1 className='title-2'>An Oktoberfest Guide</h1>
+            </div>
             {user ? 
                 <ul>
-                    <li className='user-links'><h6 className='logged-in-user'>Servus, {user.username}</h6></li>
-                    <li className='user-links'><a href='/logout' className='signout-link' onClick={handleClick}>Logout</a></li>
+                    <li className='loggedin-links-1'><h6 className='logged-in-user'>Servus, {user.username}</h6></li>
+                    <li className='loggedin-links-2'><a href='/logout' className='signout-link' onClick={handleClick}>Logout</a></li>
                 </ul>
             :
                 <ul>
-                    <li className='user-links'><a href='/sign_in' className='signin-link'>Sign In</a></li>
-                    <li className='user-links'><a href='/sign_up' className='signup-link'>Sign Up</a></li>
+                    <li className='user-links-1'><a href='/sign_in' className='signin-link'>Sign In</a></li>
+                    <li className='user-links-2'><a href='/sign_up' className='signup-link'>Sign Up</a></li>
                 </ul>
             }
         </nav>

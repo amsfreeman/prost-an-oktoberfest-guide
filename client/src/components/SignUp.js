@@ -87,7 +87,7 @@ function SignUp() {
                 {errorMessage}
                 </h5>
                 ))
-        : null}
+                : null}
             </form>
         </div>
     )
