@@ -1,5 +1,6 @@
 from flask import request, make_response, session
 from flask_restful import Resource
+from datetime import datetime
 import ipdb
 
 from config import app, db, api
@@ -66,18 +67,18 @@ class Visits(Resource):
     
     def post(self):
         data = request.get_json()
-
         try:
+            date_string = data['date'],
+            formatted_date = datetime.strptime(date_string[0], '%Y-%m-%d').date()
             new_visit = Visit(
                 visit_rating = data['visit_rating'],
-                date = data['date'],
+                date = formatted_date,
                 user_id = data['user_id'],
-                tent_id = data['tent.id']
+                tent_id = data['tent_id'],
             )
         except ValueError as v_error:
             response = make_response({'Errors': [str(v_error)]}, 400)
             return response
-        
         db.session.add(new_visit)
         db.session.commit()
 
@@ -124,9 +125,6 @@ class VisitById(Resource):
         return response
 
 api.add_resource(VisitById, '/oktoberfest_visits/<int:id>')
-
-
-
 
 #LOGIN the User
 @app.route('/login', methods=['POST'])

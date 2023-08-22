@@ -6,7 +6,7 @@ import * as yup from "yup";
 
 function NewVisitForm({addNewVisit}){
     const history = useHistory();
-    const { setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const formSchema = yup.object().shape({
         visit_rating: yup.string().required("Rating is required to add a visit."),
@@ -15,28 +15,23 @@ function NewVisitForm({addNewVisit}){
     const formik = useFormik({
         initialValues : {
             date: "",
-            rating: "",
-            tent_id: "",
-            user_id: "",
+            visit_rating: '',
+            tent_id: '',
+            user_id: {user}.id,
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
+            values.user_id = user.id
+            values.visit_rating = parseInt(values.visit_rating)
+            values.tent_id = parseInt(values.tent_id)
             console.log(values)
             fetch('/oktoberfest_visits', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
             }) 
-                .then((r) => {
-                    if (r.ok) {
-                        r.json()
-                        .then((values) => {addNewVisit(values);
-                        history.push('/');
-                        })
-                    } else {
-                        console.log('Schiesse');
-                    }
-                })
+                .then(r => r.json())
+                .then(values => addNewVisit(values))
         }
     })
 
@@ -68,7 +63,7 @@ function NewVisitForm({addNewVisit}){
             <label>Tent Visited</label>
             <select
                 type="select"
-                name="tent_selection"
+                name="tent_id"
                 value={formik.values.tent_id}
                 onChange={formik.handleChange}
             >
@@ -89,10 +84,9 @@ function NewVisitForm({addNewVisit}){
                 <option value='14'>Winzerer Fähndl (Paulaner Festzelt)</option>
             </select>
             <input 
-                type="text"
-                name="user_id"
-                value={formik.values.user_id}
-                onChange={formik.handleChange}
+                type="submit"
+                value="ADD VISIT!"
+                className="btn btn-primary"
             />
         </form>
     </div>
