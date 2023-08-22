@@ -32,6 +32,7 @@ function NewVisitForm({addNewVisit}){
             }) 
                 .then(r => r.json())
                 .then(values => addNewVisit(values))
+                history.push('/visits')
         }
     })
 
