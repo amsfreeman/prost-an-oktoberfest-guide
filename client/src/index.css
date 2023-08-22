@@ -130,3 +130,31 @@ nav {
   padding-right: 100px;
   padding-left: 100px;
 }
+
+.visit-card {
+  text-align: center;
+  border: #5f506b solid 1px;
+  padding: 1rem;
+  width: 20rem;
+  height: 20rem;
+  display: center;
+  margin: 1rem 2rem;
+  box-shadow: 2px 2px 5px 2px #5f506b;
+}
+
+.visit-card-container{
+  border: rgb(119, 53, 53) solid 1px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.visit-card-text {
+  color: #faf3e9;
+  padding-top: 10px;
+}
+
+.visit-card-info {
+  color: #6B7285;
+  text-decoration-line: underline;
+}

@@ -13,9 +13,9 @@ import { UserContext } from "../context/user";
 
 
 function App() {
-  const [tentsArray, setTentsArray] = useState([])
   const [visitsArray, setVisitsArray] = useState([])
   const { setUser } = useContext(UserContext);
+  const [ tents, setTents ] = useState([]);
 
   useEffect(() => {
     fetchTents();
@@ -24,11 +24,13 @@ function App() {
   }, [])
 
   const fetchTents = () => {
-    fetch('/oktoberfest_tents')
-      .then(r => r.json())
-      .then(tents => setTentsArray(tents))
+    fetch('/oktoberfest_tents') 
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((tents) => setTents(tents))
+        }
+      })
   }
-
   const fetchUser = () => {
     fetch("/authorized")
       .then((r) => {
@@ -59,13 +61,13 @@ function App() {
           <About />
         </Route>
         <Route exact path = '/oktoberfest_tents'>
-          <TentsList tentsArray={tentsArray}/>
+          <TentsList tents={tents}/>
         </Route>
         <Route path ='/oktoberfest_tents/:id'>
           <SingleTentDetail />
         </Route>
         <Route path ='/oktoberfest_visits'>
-          <VisitsList visitsArray={visitsArray}/>
+          <VisitsList visitsArray={visitsArray} tents={tents}/>
         </Route>
         <Route path ='/oktoberfest_add_visit'>
           <NewVisitForm addNewVisit={addNewVisit}/>
@@ -81,4 +83,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

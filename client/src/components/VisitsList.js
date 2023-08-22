@@ -5,16 +5,12 @@ function VisitsList({visitsArray}) {
         return (
             <AllVisits 
                 key = {visit.id}
-                id = {visit.id}
-                visit_rating = {visit.visit_rating}
-                date = {visit.date}
-                tent_id = {visit.tent_id}
-                user_id = {visit.user_id}
+                visit = {visit}
                 />
         )
     })
     return(
-        <div>
+        <div className="visit-card-container">
             {visitComponents}
         </div>
     )
