@@ -42,7 +42,7 @@ function NavBar() {
             {user ? 
                 <ul>
                     <li className='loggedin-links-1'><h6 className='logged-in-user'>Servus, {user.username}</h6></li>
-                    <li className='loggedin-links-2'><a href='/logout' className='signout-link' onClick={handleClick}>Logout</a></li>
+                    <li className='loggedin-links-2'><a className='signout-link' onClick={handleClick}>Logout</a></li>
                 </ul>
             :
                 <ul>
