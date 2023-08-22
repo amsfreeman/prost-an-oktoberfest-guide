@@ -31,3 +31,5 @@ Winzerer Fähndl (Paulaner Festzelt): https://paulanerfestzelt.de/wp-content/upl
 Credit for the favicon to: Twemoji at https://twemoji.twitter.com/
 
 Information about Tents: https://oktoberfest-guide.com/tents/
+
+https://getemoji.com/

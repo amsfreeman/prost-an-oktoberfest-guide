@@ -14,16 +14,15 @@ def index():
 class Users(Resource):
     def post(self):
         data = request.get_json()
-
         try:
             user = User(
                 username = data['username'],
                 email = data['email'],
-                age = data['age'],
+                age = int(data['age']),
                 password_hash = data['password'], 
             )
-        except ValueError as e:
-            response = make_response({'errors': 'MUNICH'}, 400)
+        except ValueError as v_error:
+            response = make_response({'errors': [str(v_error)]}, 422)
             return response
 
         db.session.add(user)
@@ -33,7 +32,6 @@ class Users(Resource):
 
         response = make_response(user.to_dict(), 201)
         return response
-
 api.add_resource(Users, '/users')
 
 class Tents(Resource):
@@ -98,9 +96,14 @@ class VisitById(Resource):
         
         data = request.get_json()
 
-        for attr in data:
-            try:
-                setattr(visit_by_id, attr, data[attr])
+        for attr, data[attr] in data.items():
+            try: 
+                if attr == 'date':
+                    date_string = data['date'],
+                    formatted_date = datetime.strptime(date_string[0], '%Y-%m-%d').date()
+                    setattr(visit_by_id, attr, formatted_date)
+                elif hasattr(visit_by_id, attr):
+                    setattr(visit_by_id, attr, data[attr])
             except ValueError as v_error:
                 response = make_response({'Error': [str(v_error)]}, 400)
         

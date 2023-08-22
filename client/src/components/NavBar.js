@@ -18,6 +18,7 @@ function NavBar() {
     return (
         <nav className='nav-container'>
             <div>
+            {user?
                 <ul>
                     <li className='nav-links'><a href='/'>Home</a></li>
                     <li className='nav-links'><a href='/oktoberfest_about'>About</a></li>
@@ -25,12 +26,20 @@ function NavBar() {
                     <li className='nav-links'><a href='/oktoberfest_visits'>Visits</a></li>
                     <li className='nav-links'><a href='/oktoberfest_add_visit'>Add A Visit</a></li>
                 </ul>
+            :
+                <ul>
+                    <li className='nav-links'><a href='/'>Home</a></li>
+                    <li className='nav-links'><a href='/oktoberfest_about'>About</a></li>
+                    <li className='nav-links'><a href='/oktoberfest_tents'>All Tents</a></li>
+                    <li className='nav-links'><a href='/oktoberfest_visits'>Visits</a></li>
+                </ul>
+            }
             </div>
                 <h1 className='title'>Prost! An Oktoberfest Guide</h1>
             {user ? 
                 <ul>
                     <li className='user-links'><h6 className='logged-in-user'>Servus, {user.username}</h6></li>
-                    <li className='user-links'><a href='/' className='signout-link' onClick={handleClick}>Logout</a></li>
+                    <li className='user-links'><a href='/logout' className='signout-link' onClick={handleClick}>Logout</a></li>
                 </ul>
             :
                 <ul>

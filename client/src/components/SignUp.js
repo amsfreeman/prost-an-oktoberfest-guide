@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
@@ -7,6 +7,7 @@ import * as yup from "yup";
 function SignUp() {
     const history = useHistory();
     const { setUser } = useContext(UserContext);
+    const [errors, setErrors] = useState([]);
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Username is required to sign up"),
@@ -36,7 +37,7 @@ function SignUp() {
                         history.push('/');
                         })
                     } else {
-                        console.log('Whiskey Tango Foxtrot');
+                        r.json().then((errorMessage) => setErrors(errorMessage.errors));
                     }
                 })
         }
@@ -80,6 +81,13 @@ function SignUp() {
                     value="Sign Up"
                     className="btn btn-primary"
                 />
+                {errors.length > 0
+                ? errors.map((errorMessage) => (
+                <h5 key={errorMessage} className='error-message'>
+                {errorMessage}
+                </h5>
+                ))
+        : null}
             </form>
         </div>
     )

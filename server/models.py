@@ -12,7 +12,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     email = db.Column(db.String)
-    age = db.Column(db.String)
+    age = db.Column(db.Integer)
 
     _password_hash = db.Column(db.String)
 
@@ -34,6 +34,18 @@ class User(db.Model, SerializerMixin):
     
     visits = db.relationship('Visit', back_populates='user', cascade = 'all, delete-orphan')
     tents = association_proxy('visits', 'tent')
+
+    @validates('age')
+    def validate_age(self, key, new_age):
+        if type(new_age) is int and 16 <= new_age:
+            return new_age
+        raise ValueError('You must be 16 or older to join.')
+    
+    @validates('username')
+    def validate_username(self, key, new_username):
+        if type(new_username) is str and 3 <= len(new_username):
+            return new_username
+        raise ValueError('Username must be 5 characters or longer.')
 
 class Tent(db.Model, SerializerMixin):
     __tablename__ = 'tents'
