@@ -46,49 +46,59 @@ function SignUp() {
 
     return (
         <div>
-            <h1>SignUp Here!</h1>
-            <form onSubmit={formik.handleSubmit}>
-                <label>Username</label>
-                <input 
-                    type="text"
-                    name="username"
-                    value={formik.values.username}
-                    onChange={formik.handleChange}
-                />
-                <label>Email</label>
-                <input 
-                    type="text"
-                    name="email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                />
-                <label>Password</label>
-                <input 
-                    type="password"
-                    name="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                />
-                <label>Age</label>
-                <input 
-                    type="text"
-                    name="age"
-                    value={formik.values.age}
-                    onChange={formik.handleChange}
-                />
-                <input 
-                    type="submit"
-                    value="Sign Up"
-                    className="btn btn-primary"
-                />
-                {errors.length > 0
-                ? errors.map((errorMessage) => (
-                <h5 key={errorMessage} className='error-message'>
-                {errorMessage}
-                </h5>
-                ))
-                : null}
-            </form>
+            <h1 className='signup-title'>Sign Up Here!</h1>
+            <div className='signin-form-container'>
+                <form onSubmit={formik.handleSubmit}>
+                    <div className='form-group'>
+                        <label>Username: </label>
+                        <input 
+                            type="text"
+                            name="username"
+                            value={formik.values.username}
+                            onChange={formik.handleChange}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label>Email: </label>
+                        <input 
+                            type="text"
+                            name="email"
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label>Password: </label>
+                        <input 
+                            type="password"
+                            name="password"
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label>Age: </label>
+                        <input 
+                            type="text"
+                            name="age"
+                            value={formik.values.age}
+                            onChange={formik.handleChange}
+                        />
+                    </div>
+                    <input 
+                        type="submit"
+                        value="Sign Up"
+                        className="btn btn-primary"
+                    />
+                    {errors.length > 0
+                    ? errors.map((errorMessage) => (
+                    <h5 key={errorMessage} className='error-message'>
+                    {errorMessage}
+                    </h5>
+                    ))
+                    : null}
+                </form>
+            </div>
         </div>
     )
 

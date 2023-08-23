@@ -190,3 +190,78 @@ nav {
 .yup-error-edit {
   color: #973535;
 }
+
+.about-heading {
+  color: #faf3e9;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.about-1 {
+    color: #faf3e9;
+    padding-top: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.about-2 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.about-3 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.about-4 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.about-5 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.sources-header {
+  color: #faf3e9;
+  padding-top: 50px;
+  text-align: center;
+  text-decoration-line: underline;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.sources {
+  color: #faf3e9;
+  word-wrap: break-word;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.form-group {
+  color: #faf3e9;
+}
+
+.signup-title {
+  color: #faf3e9;
+  text-align: center;
+}
+
+.signin-title {
+  color: #faf3e9;
+  text-align: center;
+}
+
+.signin-form-container {
+  text-align: center;
+}

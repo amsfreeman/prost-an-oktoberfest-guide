@@ -41,35 +41,43 @@ function SignUp() {
 
     return (
         <>
-            <h1>Sign In Here!</h1>
-            <form onSubmit={formik.handleSubmit}>
-                <label>Username</label>
-                <input 
-                    type="text"
-                    name="username"
-                    value={formik.values.username}
-                    onChange={formik.handleChange}
-                />
-                <label>Password</label>
-                <input 
-                    type="password"
-                    name="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                />
-                <input 
-                    type="submit"
-                    value="Sign In"
-                    className="btn btn-primary"
-                />
-                {errors.length > 0
-                ? errors.map((errorMessage) => (
-                <h5 key={errorMessage} className='error-message'>
-                {errorMessage}
-                </h5>
-                ))
-                : null}
-            </form>
+            <h1 className='signin-title'>Sign In Here!</h1>
+                <div className='signin-form-container'>
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className='form-group'>
+                            <label>Username: </label>
+                            <input 
+                                type="text"
+                                name="username"
+                                value={formik.values.username}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <label>Password: </label>
+                            <input 
+                                type="password"
+                                name="password"
+                                value={formik.values.password}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <input 
+                                type="submit"
+                                value="Sign In"
+                                className="btn btn-primary"
+                            />
+                        </div>
+                        {errors.length > 0
+                        ? errors.map((errorMessage) => (
+                        <h5 key={errorMessage} className='error-message'>
+                        {errorMessage}
+                        </h5>
+                        ))
+                        : null}
+                </form>
+            </div>
         </>
     )
 }
