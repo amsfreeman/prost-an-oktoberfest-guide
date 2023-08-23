@@ -43,7 +43,7 @@ On the home page you will see a picture of Oktoberfest and two navigation bars. 
 - Hofbräu-Festzelt: https://oktoberfest-guide.com/site/assets/files/2162/hofbrauzelt-fassade-frontal.1920x0.jpg
 - Löwenbräu-Festzelt: https://www.oktoberfest.de/site/assets/files/1477/loewenbraeu_fassade_sebastian_lehner-06928.jpg
 - Marstall-Festzelt: https://oktoberfest-guide.com/site/assets/files/2165/marstall-festzelt-fassade-seitlich.1920x0.webp
-- Ochsenbraterei: https://www.oktoberfest.de/site/assets/files/2242/ochsenbraterei_fassade_sebastian_lehner-06841.-landscape.jpg
+- Ochsenbraterei: https://oktoberfest-guide.com/tents/ochsenbraterei/
 - Schottenhamel-Festhalle: https://tischreservierung-oktoberfest.de/wp-content/uploads/2017/01/DSC_0425_Schottenhamel_au%C3%9Fen-2-1208x800.jpg
 - Schützenfestzelt: https://oktoberfest-guide.com/site/assets/files/2110/schutzenfestzelt-fassde-seitlich-bavaria-totale.1920x0.jpg
 - Weinzelt: https://www.oktoberfest.de/site/assets/files/1471/kufflers_weinzelt_fassade_sebastian_lehner-07421.-landscape.jpg
