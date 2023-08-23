@@ -154,10 +154,16 @@ nav {
   border: #5f506b solid 1px;
   padding: 1rem;
   width: 20rem;
-  height: 30rem;
+  height: 22rem;
   display: center;
   margin: 1rem 2rem;
   box-shadow: 2px 2px 5px 2px #5f506b;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+
+.expanded {
+  height: auto;
 }
 
 .visit-card-container{
