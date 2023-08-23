@@ -265,3 +265,23 @@ nav {
 .signin-form-container {
   text-align: center;
 }
+
+.main-tent-page-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 150px;
+  padding-right: 150px;
+  color: #faf3e9;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.main-vists-page-header{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 150px;
+  padding-right: 150px;
+  color: #faf3e9;
+  text-align: justify;
+  text-justify: inter-word;
+}
