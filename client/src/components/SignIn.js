@@ -76,7 +76,7 @@ function SignUp() {
                         </h5>
                         ))
                         : null}
-                </form>
+                    </form>
             </div>
         </>
     )
