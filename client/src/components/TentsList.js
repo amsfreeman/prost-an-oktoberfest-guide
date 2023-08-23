@@ -1,8 +1,8 @@
 import AllTents from "./AllTents"
 
-function TentsList({tentsArray}) {
-    console.log(tentsArray)
-    const tentComponents = tentsArray.map(tent => {
+function TentsList({tents}) {
+    console.log(tents)
+    const tentComponents = tents.map(tent => {
         return (
         <AllTents
             key={tent.id}

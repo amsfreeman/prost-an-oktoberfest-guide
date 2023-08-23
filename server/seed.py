@@ -1,17 +1,19 @@
 # Standard library imports
 from random import randint, choice as rc
+from datetime import date
 
 # Local imports
 from app import app, db
 
 # Add models imports here
-from models import User, Tent
+from models import User, Tent, Visit
 
 if __name__ == '__main__':
     with app.app_context():
         print("Clearing database...")
         User.query.delete()
         Tent.query.delete()
+        Visit.query.delete()
 
         print("Starting seed...")
 
@@ -22,11 +24,10 @@ if __name__ == '__main__':
         u3 = User(username = 'bowski', email='jon@mail.com', age= 37, password_hash='cologne')
         u4 = User(username = 'markc', email='mark@mail.com', age=30, password_hash='stuttgart')
         u5 = User(username = 'niamh', email='niamh@mail.com', age=33, password_hash='dresden')
-        u6 = User(username = 'katharina', email='katharina@mail.com', age=40, password_hash='ulm')
-        u7 = User(username = 'mkhobrecht', email='mk@mail.com', age = 28, password_hash='leipzig')
-        u8 = User(username = 'katzbird', email='marc@mail.com', age = 25, password_hash='vienna')
+        u6 = User(username = 'mkhobrecht', email='mk@mail.com', age = 28, password_hash='leipzig')
+        u7 = User(username = 'katzbird', email='marc@mail.com', age = 25, password_hash='vienna')
 
-        users = [u1, u2, u3, u4, u5, u6, u7, u8]
+        users = [u1, u2, u3, u4, u5, u6, u7]
         db.session.add_all(users)
         db.session.commit()
 
@@ -49,6 +50,34 @@ if __name__ == '__main__':
 
         tents = [t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14]
         db.session.add_all(tents)
+        db.session.commit()
+
+        print("Seeding visits...")
+
+        v1 = Visit(visit_rating = 3, date = date(2017,9,17), user_id = 1, tent_id = 4)
+        v2 = Visit(visit_rating = 4, date = date(2018,9,20), user_id = 2, tent_id = 3)
+        v3 = Visit(visit_rating = 5, date = date(2017,9,21), user_id = 3, tent_id = 10)
+        v4 = Visit(visit_rating = 4, date = date(2017,10,2), user_id = 4, tent_id = 12)
+        v5 = Visit(visit_rating = 3, date = date(2017,10,3), user_id = 5, tent_id = 1)
+        v6 = Visit(visit_rating = 2, date = date(2018,10,3), user_id = 6, tent_id = 7)
+        v7 = Visit(visit_rating = 1, date = date(2019,10,1), user_id = 7, tent_id = 11)
+        v8 = Visit(visit_rating = 3, date = date(2019,9,20), user_id = 1, tent_id = 5)
+        v9 = Visit(visit_rating = 4, date = date(2017,9,20), user_id = 2, tent_id = 2)
+        v10 = Visit(visit_rating = 5, date = date(2022,10,2), user_id = 3, tent_id = 6)
+        v11 = Visit(visit_rating = 3, date = date(2022,9,18), user_id = 4, tent_id = 14)
+        v12 = Visit(visit_rating = 4, date = date(2022,9,25), user_id = 5, tent_id = 9)
+        v13 = Visit(visit_rating = 1, date = date(2022,9,27), user_id = 6, tent_id = 8)
+        v14 = Visit(visit_rating = 4, date = date(2017,9,30), user_id = 7, tent_id = 13)
+        v15 = Visit(visit_rating = 5, date = date(2018,10,3), user_id = 1, tent_id = 4)
+        v16 = Visit(visit_rating = 3, date = date(2019,10,2), user_id = 2, tent_id = 4)
+        v17 = Visit(visit_rating = 4, date = date(2018,9,24), user_id = 3, tent_id = 10)
+        v18 = Visit(visit_rating = 3, date = date(2017,9,20), user_id = 4, tent_id = 12)
+        v19 = Visit(visit_rating = 2, date = date(2017,9,21), user_id = 5, tent_id = 1)
+        v20 = Visit(visit_rating = 1, date = date(2017,9,24), user_id = 6, tent_id = 7)
+        v21 = Visit(visit_rating = 5, date = date(2017,9,28), user_id = 7, tent_id = 11)
+
+        visits = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21]
+        db.session.add_all(visits)
         db.session.commit()
 
         print("Done seeding!")

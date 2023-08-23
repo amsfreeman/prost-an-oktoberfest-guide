@@ -1,28 +1,24 @@
 from flask import request, make_response, session
 from flask_restful import Resource
+from datetime import datetime
 import ipdb
 
 from config import app, db, api
 
-from models import User, Tent
-
-@app.route('/')
-def index():
-    return '<h1>Prost! An Oktoberfest Guide/h1>'
+from models import User, Tent, Visit
 
 class Users(Resource):
     def post(self):
         data = request.get_json()
-
         try:
             user = User(
                 username = data['username'],
                 email = data['email'],
-                age = data['age'],
+                age = int(data['age']),
                 password_hash = data['password'], 
             )
-        except ValueError as e:
-            response = make_response({'errors': 'MUNICH'}, 400)
+        except ValueError as v_error:
+            response = make_response({'errors': [str(v_error)]}, 422)
             return response
 
         db.session.add(user)
@@ -32,7 +28,6 @@ class Users(Resource):
 
         response = make_response(user.to_dict(), 201)
         return response
-
 api.add_resource(Users, '/users')
 
 class Tents(Resource):
@@ -57,6 +52,79 @@ class TentById(Resource):
 
 api.add_resource(TentById, '/oktoberfest_tents/<int:id>')
 
+class Visits(Resource):
+    def get(self):
+        visits = [v.to_dict() for v in Visit.query.all()]
+
+        response = make_response(visits, 200)
+        return response
+    
+    def post(self):
+        data = request.get_json()
+        try:
+            date_string = data['date'],
+            formatted_date = datetime.strptime(date_string[0], '%Y-%m-%d').date()
+            new_visit = Visit(
+                visit_rating = data['visit_rating'],
+                date = formatted_date,
+                user_id = data['user_id'],
+                tent_id = data['tent_id'],
+            )
+        except ValueError as v_error:
+            response = make_response({'Errors': [str(v_error)]}, 400)
+            return response
+        db.session.add(new_visit)
+        db.session.commit()
+
+        new_visit_dict = new_visit.to_dict()
+        response = make_response(new_visit_dict, 201)
+        return response
+    
+api.add_resource(Visits, '/oktoberfest_visits')
+
+class VisitById(Resource):
+    def patch(self, id):
+        visit_by_id = Visit.query.filter_by(id=id).first()
+
+        if not Visit:
+            response = make_response({"Error": "Visit not found"}, 404)
+            return response
+        
+        data = request.get_json()
+
+        for attr, data[attr] in data.items():
+            try: 
+                if attr == 'date':
+                    date_string = data['date'],
+                    formatted_date = datetime.strptime(date_string[0], '%Y-%m-%d').date()
+                    setattr(visit_by_id, attr, formatted_date)
+                elif hasattr(visit_by_id, attr):
+                    setattr(visit_by_id, attr, data[attr])
+            except ValueError as v_error:
+                response = make_response({'Error': [str(v_error)]}, 400)
+        
+        db.session.commit()
+
+        visit_by_id_dict = visit_by_id.to_dict()
+
+        response = make_response(visit_by_id_dict, 202)
+        return response
+
+    def delete(self, id):
+        visit_to_delete = Visit.query.filter_by(id=id).first()
+
+        if not Visit:
+            response = make_response({"Error": "Visit not found"}, 404)
+            return response
+        
+        db.session.delete(visit_to_delete)
+        db.session.commit()
+
+        response = make_response({}, 204)
+        return response
+
+api.add_resource(VisitById, '/oktoberfest_visits/<int:id>')
+
 #LOGIN the User
 @app.route('/login', methods=['POST'])
 def login():
@@ -69,10 +137,10 @@ def login():
             response = make_response(user.to_dict(), 200)
             return response
         else:
-            response = make_response({"errors": "Password incorrect"}, 401)
+            response = make_response({"errors": ["Password incorrect, please try again."]}, 422)
             return response
     except:
-        response = make_response({"errors": "Username incorrect"}, 401)
+        response = make_response({"errors": ["Username incorrect, please try again."]}, 422)
         return response
 
 #KEEP the User logged in

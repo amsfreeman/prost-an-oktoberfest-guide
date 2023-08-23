@@ -1,36 +1,47 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
 body {
   background-color: #76949F;
 }
 
 .nav-links {
-  float: left;
+  float: inline-start;
   display: block;
-  align-items: center;
   padding: 8px;
   background-color: #75a093;
-  border: rgb(119, 53, 53) solid 1px;
+  /* border: rgb(119, 53, 53) solid 1px; */
 }
 
-.user-links {
-  float:right;
+.user-links-1 {
+  float: inline-start;
+  display: block;
+  padding: 8px;
+  margin-top: 1.6rem;
+  background-color: #75a093;
+  /* border: rgb(119, 53, 53) solid 1px; */
+}
+
+.user-links-2 {
+  float: inline-start;
   display: block;
   padding: 8px;
   background-color: #75a093;
-  border: rgb(119, 53, 53) solid 1px;
+  /* border: rgb(119, 53, 53) solid 1px; */
+}
+
+.loggedin-links-1 {
+  float: inline-start;
+  display: block;
+  padding: 8px;
+  margin-top: 1.6rem;
+  background-color: #75a093;
+  /* border: rgb(119, 53, 53) solid 1px; */
+}
+
+.loggedin-links-2 {
+  float: inline-start;
+  display: block;
+  padding: 8px;
+  background-color: #75a093;
+  /* border: rgb(119, 53, 53) solid 1px; */
 }
 
 .logged-in-user {
@@ -38,21 +49,28 @@ body {
   display: block;
   margin-bottom: 3px;
   background-color: #75a093;
-  border: rgb(119, 53, 53) solid 1px;
+  /* border: rgb(119, 53, 53) solid 1px; */
 }
 
-.title {
+.title-1 {
+  text-align: center;
+  color: antiquewhite;
+  font-size: 40px;
+  padding-top: 2rem;
+}
+
+.title-2 {
   text-align: center;
   color: antiquewhite;
   font-size: 40px;
 }
 
 nav {
-  height: 100px;
+  height: 240px;
   padding-top: 20px;
   display: flex;
   justify-content: space-evenly;
-  border: rgb(119, 53, 53) solid 1px;
+  /* border: rgb(119, 53, 53) solid 1px; */
   background-color: #6B7285;
 }
 
@@ -80,7 +98,7 @@ nav {
 }
 
 .tent-card-container{
-  border: rgb(119, 53, 53) solid 1px;
+  /* border: rgb(119, 53, 53) solid 1px; */
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -98,7 +116,7 @@ nav {
 }
 
 .single-tent-card-container {
-  border: rgb(119, 53, 53) solid 1px;
+  /* border: rgb(119, 53, 53) solid 1px; */
   display: flex;
   justify-content: center;
 }
@@ -129,4 +147,121 @@ nav {
   color: #533747;
   padding-right: 100px;
   padding-left: 100px;
+}
+
+.visit-card {
+  text-align: center;
+  border: #5f506b solid 1px;
+  padding: 1rem;
+  width: 20rem;
+  height: 30rem;
+  display: center;
+  margin: 1rem 2rem;
+  box-shadow: 2px 2px 5px 2px #5f506b;
+}
+
+.visit-card-container{
+  /* border: rgb(119, 53, 53) solid 1px; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.visit-card-text {
+  color: #faf3e9;
+  padding-top: 10px;
+}
+
+.visit-card-info {
+  color: #6B7285;
+  text-decoration-line: underline;
+}
+
+.error-message {
+  color: #973535;
+  padding-top: 20px;
+}
+
+.yup-error {
+  color: #973535;
+  padding-top: 40px;
+}
+
+.yup-error-edit {
+  color: #973535;
+}
+
+.about-heading {
+  color: #faf3e9;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.about-1 {
+    color: #faf3e9;
+    padding-top: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.about-2 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.about-3 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.about-4 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.about-5 {
+  color: #faf3e9;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.sources-header {
+  color: #faf3e9;
+  padding-top: 50px;
+  text-align: center;
+  text-decoration-line: underline;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.sources {
+  color: #faf3e9;
+  word-wrap: break-word;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.form-group {
+  color: #faf3e9;
+}
+
+.signup-title {
+  color: #faf3e9;
+  text-align: center;
+}
+
+.signin-title {
+  color: #faf3e9;
+  text-align: center;
+}
+
+.signin-form-container {
+  text-align: center;
 }

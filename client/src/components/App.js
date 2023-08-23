@@ -6,25 +6,31 @@ import Home from "./Home";
 import NavBar from "./NavBar";
 import About from "./About";
 import TentsList from "./TentsList";
+import VisitsList from "./VisitsList";
+import NewVisitForm from "./NewVisitForm";
 import SingleTentDetail from "./SingleTentDetail";
 import { UserContext } from "../context/user";
 
 
 function App() {
-  const [tentsArray, setTentsArray] = useState([])
+  const [visitsArray, setVisitsArray] = useState([])
   const { setUser } = useContext(UserContext);
+  const [ tents, setTents ] = useState([]);
 
   useEffect(() => {
     fetchTents();
-    fetchUser()
+    fetchVisits();
+    fetchUser();
   }, [])
 
   const fetchTents = () => {
-    fetch('/oktoberfest_tents')
-      .then(r => r.json())
-      .then(tents => setTentsArray(tents))
+    fetch('/oktoberfest_tents') 
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((tents) => setTents(tents))
+        }
+      })
   }
-
   const fetchUser = () => {
     fetch("/authorized")
       .then((r) => {
@@ -33,6 +39,16 @@ function App() {
         }
       })
   }  
+
+  const fetchVisits = () => {
+    fetch('/oktoberfest_visits')
+      .then(r => r.json())
+      .then(visits => setVisitsArray(visits))
+  }
+
+  function addNewVisit(newVisit) {
+    setVisitsArray([...visitsArray, newVisit])
+  }
 
   return (
     <div className='App'>
@@ -45,10 +61,16 @@ function App() {
           <About />
         </Route>
         <Route exact path = '/oktoberfest_tents'>
-          <TentsList tentsArray={tentsArray}/>
+          <TentsList tents={tents}/>
         </Route>
         <Route path ='/oktoberfest_tents/:id'>
           <SingleTentDetail />
+        </Route>
+        <Route path ='/oktoberfest_visits'>
+          <VisitsList visitsArray={visitsArray} tents={tents}/>
+        </Route>
+        <Route path ='/oktoberfest_add_visit'>
+          <NewVisitForm addNewVisit={addNewVisit}/>
         </Route>
         <Route path = '/sign_in'>
           <SignIn />
@@ -61,4 +83,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
