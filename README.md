@@ -51,11 +51,12 @@ On the home page you will see a picture of Oktoberfest and two navigation bars. 
 - Winzerer Fähndl (Paulaner Festzelt): https://paulanerfestzelt.de/wp-content/uploads/2019/11/paulaner-fest-tent.jpg
 
 ### Other Sources: 
-- Credit for the favicon to: Twemoji at https://twemoji.twitter.com/
+- Credit for the favicon to: https://favicon.io/favicon-converter/
 - Information about Tents: https://oktoberfest-guide.com/tents/
 - Emoji for Edit and Delete Button: https://getemoji.com/
 
 ### People to Thank:
 - My amazing instructors in the Flatiron Bootcamp, Adam and Emiley
 - My study group, Jon and Jessica, I could not have made it to this point without you all
+- Marc who helped me again and again
 - My parents for their support during this bootcamp

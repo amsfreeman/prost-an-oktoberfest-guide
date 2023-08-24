@@ -3,6 +3,8 @@ import { UserContext } from '../context/user';
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import oktoberfest4 from "../assets/oktoberfest4.jpeg"
+import oktoberfest5 from '../assets/oktoberfest5.jpeg'
 
 function SignUp() {
     const history = useHistory();
@@ -45,9 +47,16 @@ function SignUp() {
 
 
     return (
-        <div>
-            <h1 className='signup-title'>Sign Up Here!</h1>
-            <div className='signin-form-container'>
+        <div className='layout-container'>
+            <div className='left-section'>
+                <img src={oktoberfest4} 
+                alt="Oktoberfest" 
+                className='left-image'
+                />
+                <h6 className='left-image-text'>View of Oktoberfest from the Riesenrad (similar to a Ferris Wheel) on a rainy day</h6>
+            </div>
+            <div className='center-section'>
+                <h1 className='signup-title'>Sign Up Here!</h1>
                 <form onSubmit={formik.handleSubmit}>
                     <div className='form-group'>
                         <label>Username: </label>
@@ -98,6 +107,13 @@ function SignUp() {
                     ))
                     : null}
                 </form>
+            </div>
+            <div className='right-section'>
+                <img src={oktoberfest5} 
+                alt="Oktoberfest" 
+                className='right-image'
+                />
+                <h6 className='right-image-text'>View of Oktoberfest from the Riesenrad (similar to a Ferris Wheel) on a nice weekday afternoon</h6>
             </div>
         </div>
     )

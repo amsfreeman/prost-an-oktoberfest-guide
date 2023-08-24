@@ -201,23 +201,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* .visit-card-container-on-tents {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-} */
-
-/* .vist-card-on-tents {
-  text-align: center;
-  border: #5f506b solid 1px;
-  padding: 1rem;
-  width: 50rem;
-  height: 50rem;
-  display: center;
-  margin: 1rem 2rem;
-  box-shadow: 2px 2px 5px 2px #5f506b;
-} */
-
 .visit-card-text {
   color: #faf3e9;
   padding-top: 10px;
@@ -313,7 +296,27 @@ body {
   text-align: center;
 }
 
-.signin-form-container {
+.layout-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.left-section, .right-section {
+  flex: 1;
+}
+
+.left-image, .right-image {
+  max-width: 100%;
+}
+
+.left-image-text, .right-image-text {
+  color: #faf3e9;
+  text-align: center;
+}
+.center-section {
+  flex: 2;
   text-align: center;
 }
 
@@ -350,3 +353,4 @@ body {
   color: #533747;
   background-color: #86bbbd;
 }
+
