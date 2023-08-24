@@ -27,8 +27,9 @@ if __name__ == '__main__':
         u5 = User(username = 'niamh', email='niamh@mail.com', age=33, password_hash='dresden')
         u6 = User(username = 'mkhobrecht', email='mk@mail.com', age = 28, password_hash='leipzig')
         u7 = User(username = 'katzbird', email='marc@mail.com', age = 25, password_hash='vienna')
+        u8 = User(username = 'megawatt', email='megan@mail.com', age = 30, password_hash = 'bonn')
 
-        users = [u1, u2, u3, u4, u5, u6, u7]
+        users = [u1, u2, u3, u4, u5, u6, u7, u8]
         db.session.add_all(users)
         db.session.commit()
 
@@ -75,8 +76,11 @@ if __name__ == '__main__':
         v19 = Visit(visit_rating = 2, date = date(2017,9,21), user_id = 5, tent_id = 1)
         v20 = Visit(visit_rating = 1, date = date(2017,9,24), user_id = 6, tent_id = 7)
         v21 = Visit(visit_rating = 5, date = date(2017,9,28), user_id = 7, tent_id = 11)
+        v22 = Visit(visit_rating = 4, date = date(2022,9,27), user_id = 8, tent_id = 5)
+        v23 = Visit(visit_rating = 2, date = date(2022,9,30), user_id = 8, tent_id = 2)
+        v24 = Visit(visit_rating = 5, date = date(2017,9,25), user_id = 8, tent_id = 2)
 
-        visits = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21]
+        visits = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24]
         db.session.add_all(visits)
         db.session.commit()
 

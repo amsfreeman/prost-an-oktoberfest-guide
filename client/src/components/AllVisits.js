@@ -56,7 +56,7 @@ function AllVisits({visit}) {
 
     return(
         <div className={`visit-card ${showForm ? 'expanded' : ''}`}>
-            <div class="visit-card-header">
+            <div className="visit-card-header">
                 { user ? 
                     <div>
                         <h2 className='visit-card-info'>Visit Info</h2>

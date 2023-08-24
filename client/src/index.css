@@ -3,75 +3,103 @@ body {
 }
 
 .nav-links {
-  float: inline-start;
-  display: block;
-  padding: 8px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   background-color: #75a093;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
 .user-links-1 {
-  float: inline-start;
-  display: block;
-  padding: 8px;
-  margin-top: 1.6rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   background-color: #75a093;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
 .user-links-2 {
-  float: inline-start;
-  display: block;
-  padding: 8px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   background-color: #75a093;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
 .loggedin-links-1 {
-  float: inline-start;
-  display: block;
-  padding: 8px;
-  margin-top: 1.6rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
   background-color: #75a093;
+  color: #533747;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
 .loggedin-links-2 {
-  float: inline-start;
-  display: block;
-  padding: 8px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 0rem;
   background-color: #75a093;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
 .logged-in-user {
-  float: right;
-  display: block;
-  margin-bottom: 3px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   background-color: #75a093;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
-.title-1 {
-  text-align: center;
-  color: antiquewhite;
-  font-size: 40px;
-  padding-top: 2rem;
-}
-
-.title-2 {
-  text-align: center;
-  color: antiquewhite;
-  font-size: 40px;
-}
-
-nav {
-  height: 240px;
-  padding-top: 20px;
+.nav-container {
   display: flex;
-  justify-content: space-evenly;
-  /* border: rgb(119, 53, 53) solid 1px; */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   background-color: #6B7285;
+  /* border: rgb(119, 53, 53) solid 1px; */
+}
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-width: 20%;
+  height: auto;
 }
 
 .home-image {
@@ -172,6 +200,23 @@ nav {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+/* .visit-card-container-on-tents {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+} */
+
+/* .vist-card-on-tents {
+  text-align: center;
+  border: #5f506b solid 1px;
+  padding: 1rem;
+  width: 50rem;
+  height: 50rem;
+  display: center;
+  margin: 1rem 2rem;
+  box-shadow: 2px 2px 5px 2px #5f506b;
+} */
 
 .visit-card-text {
   color: #faf3e9;
@@ -290,4 +335,18 @@ nav {
   color: #faf3e9;
   text-align: justify;
   text-justify: inter-word;
+}
+
+.visits-list {
+  text-align: center;
+  color: #faf3e9;
+}
+
+.ul {
+  padding-left: 0;
+}
+
+.table {
+  color: #533747;
+  background-color: #86bbbd;
 }
