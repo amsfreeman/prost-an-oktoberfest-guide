@@ -34,6 +34,8 @@ function SingleTentDetail() {
                         <p className="single-tent-card-text">Tent's First Year at Oktoberfest: {tent.first_year}</p>
                         <p className="single-tent-card-text">Beer Type Sold: {tent.beer_sold}</p>
                         <p className="single-tent-card-text">{tent.details}</p>
+                        <h3 className="single-tent-card-map">Location of Tent:</h3>
+                        <img src={`/static/assets/images/star-images/star-tent${tent.id}.png`} alt="Star of tent's location" className="single-tent-card-img-bottom"/>
                     </div>
                 </div>
             </div>
