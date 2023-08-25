@@ -17,9 +17,14 @@ function TentsList({tents}) {
         )
     })
     return(
-        <div className="tent-card-container">
-                {tentComponents}
-        </div>
+        <>
+            <div className="header-container">
+            <h4 className="main-tent-page-header">Below are listed the 14 big tents of Oktoberfest. Each with unique characteristics and history, which one will you visit first? Click on any tent for more details!</h4>
+            </div>
+            <div className="tent-card-container">
+                    {tentComponents}
+            </div>
+        </>
     )
 }
 

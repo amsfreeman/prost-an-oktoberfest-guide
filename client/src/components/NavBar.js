@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/user';
+import prostLogo from '.././assets/prost-logo.png'
 
 function NavBar() {
     const history = useHistory()
@@ -17,9 +18,9 @@ function NavBar() {
 
     return (
         <nav className='nav-container'>
-            <div>
+            <div className='problem'>
             {user?
-                <ul>
+                <ul className='ul'>
                     <li className='nav-links'><a href='/'>Home</a></li>
                     <li className='nav-links'><a href='/oktoberfest_about'>About</a></li>
                     <li className='nav-links'><a href='/oktoberfest_tents'>All Tents</a></li>
@@ -27,7 +28,7 @@ function NavBar() {
                     <li className='nav-links'><a href='/oktoberfest_add_visit'>Add A Visit</a></li>
                 </ul>
             :
-                <ul>
+                <ul className='ul'>
                     <li className='nav-links'><a href='/'>Home</a></li>
                     <li className='nav-links'><a href='/oktoberfest_about'>About</a></li>
                     <li className='nav-links'><a href='/oktoberfest_tents'>All Tents</a></li>
@@ -35,17 +36,16 @@ function NavBar() {
                 </ul>
             }
             </div>
-            <div>
-                <h1 className='title-1'>Prost!</h1>
-                <h1 className='title-2'>An Oktoberfest Guide</h1>
+            <div className='logo-container'>
+                <img src={prostLogo} alt="Prost! An Oktoberfest Guide Logo" className='logo'/>
             </div>
             {user ? 
-                <ul>
-                    <li className='loggedin-links-1'><h6 className='logged-in-user'>Servus, {user.username}</h6></li>
-                    <li className='loggedin-links-2'><a className='signout-link' onClick={handleClick}>Logout</a></li>
+                <ul className='ul'>
+                    <li className='loggedin-links-1'><h6 className='logged-in-user'>Servus, <br /> {user.username}</h6></li>
+                    <li className='loggedin-links-2'><a href="/" className='signout-link' onClick={handleClick}>Logout</a></li>
                 </ul>
             :
-                <ul>
+                <ul className='ul'>
                     <li className='user-links-1'><a href='/sign_in' className='signin-link'>Sign In</a></li>
                     <li className='user-links-2'><a href='/sign_up' className='signup-link'>Sign Up</a></li>
                 </ul>
