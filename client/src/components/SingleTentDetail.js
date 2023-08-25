@@ -28,7 +28,7 @@ function SingleTentDetail() {
             <div className="single-tent-card-container">
                 <div className="single-tent-card">
                     <div className="single-tent-card-body">
-                        <img src={`/static/assets/images/tent${tent.id}.jpg`} alt={tent.name} className="single-tent-card-img-top"/>
+                        <img src={`/static/assets/images/tent-images/tent${tent.id}.jpg`} alt={tent.name} className="single-tent-card-img-top"/>
                         <h3 className="single-tent-card-title">{tent.name}</h3>
                         <p className="single-tent-card-text">Capacity: {tent.capacity} Festgoers</p>
                         <p className="single-tent-card-text">Tent's First Year at Oktoberfest: {tent.first_year}</p>

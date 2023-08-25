@@ -86,7 +86,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #6B7285;
+  background-color: #6b7285;
   /* border: rgb(119, 53, 53) solid 1px; */
 }
 
@@ -119,7 +119,7 @@ body {
   border: #5f506b solid 1px;
   padding: 1rem;
   width: 20rem;
-  height: 20rem;
+  height: 21rem;
   display: center;
   margin: 1rem 2rem;
   box-shadow: 2px 2px 5px 2px #5f506b;
