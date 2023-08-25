@@ -305,6 +305,7 @@ body {
 
 .form-group {
   color: #faf3e9;
+  width: 100%;
 }
 
 .signup-title {
@@ -375,3 +376,6 @@ body {
   background-color: #86bbbd;
 }
 
+.btn-primary {
+  margin-top: 20px;
+}

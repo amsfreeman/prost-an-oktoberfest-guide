@@ -52,40 +52,44 @@ function SignUp() {
             </div>
             <div className='center-section'>
                 <h1 className='signin-title'>Sign In Here!</h1>
-                <form onSubmit={formik.handleSubmit}>
-                    <div className='form-group'>
-                        <label>Username:</label>
-                        <input 
-                            type="text"
-                            name="username"
-                            value={formik.values.username}
-                            onChange={formik.handleChange}
-                        />
-                    </div>
-                    <div className='form-group'>
-                        <label>Password:</label>
-                        <input 
-                            type="password"
-                            name="password"
-                            value={formik.values.password}
-                            onChange={formik.handleChange}
-                        />
-                    </div>
-                    <div>
-                        <input 
-                            type="submit"
-                            value="Sign In"
-                            className="btn btn-primary"
-                        />
-                    </div>
-                    {errors.length > 0
-                    ? errors.map((errorMessage) => (
-                    <h5 key={errorMessage} className='error-message'>
-                    {errorMessage}
-                    </h5>
-                    ))
-                    : null}
-                </form>
+                <div className='d-flex justify-content-center'>
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className='form-group'>
+                            <label>Username:</label>
+                            <input 
+                                type="text"
+                                name="username"
+                                className='form-control'
+                                value={formik.values.username}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <label>Password:</label>
+                            <input 
+                                type="password"
+                                name="password"
+                                className='form-control'
+                                value={formik.values.password}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <input 
+                                type="submit"
+                                value="Sign In"
+                                className="btn btn-primary"
+                            />
+                        </div>
+                        {errors.length > 0
+                        ? errors.map((errorMessage) => (
+                        <h5 key={errorMessage} className='error-message'>
+                        {errorMessage}
+                        </h5>
+                        ))
+                        : null}
+                    </form>
+                </div>  
             </div>
             <div className='right-section'>
                 <img src={oktoberfest3} 

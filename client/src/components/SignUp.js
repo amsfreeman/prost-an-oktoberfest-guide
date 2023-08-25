@@ -57,56 +57,62 @@ function SignUp() {
             </div>
             <div className='center-section'>
                 <h1 className='signup-title'>Sign Up Here!</h1>
-                <form onSubmit={formik.handleSubmit}>
-                    <div className='form-group'>
-                        <label>Username: </label>
+                <div className='d-flex justify-content-center'>
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className='form-group'>
+                            <label>Username: </label>
+                            <input 
+                                type="text"
+                                name="username"
+                                className='form-control'
+                                value={formik.values.username}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <label>Email: </label>
+                            <input 
+                                type="text"
+                                name="email"
+                                className='form-control'
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <label>Password: </label>
+                            <input 
+                                type="password"
+                                name="password"
+                                className='form-control'
+                                value={formik.values.password}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <label>Age: </label>
+                            <input 
+                                type="text"
+                                name="age"
+                                className='form-control'
+                                value={formik.values.age}
+                                onChange={formik.handleChange}
+                            />
+                        </div>
                         <input 
-                            type="text"
-                            name="username"
-                            value={formik.values.username}
-                            onChange={formik.handleChange}
+                            type="submit"
+                            value="Sign Up"
+                            className="btn btn-primary"
                         />
-                    </div>
-                    <div className='form-group'>
-                        <label>Email: </label>
-                        <input 
-                            type="text"
-                            name="email"
-                            value={formik.values.email}
-                            onChange={formik.handleChange}
-                        />
-                    </div>
-                    <div className='form-group'>
-                        <label>Password: </label>
-                        <input 
-                            type="password"
-                            name="password"
-                            value={formik.values.password}
-                            onChange={formik.handleChange}
-                        />
-                    </div>
-                    <div className='form-group'>
-                        <label>Age: </label>
-                        <input 
-                            type="text"
-                            name="age"
-                            value={formik.values.age}
-                            onChange={formik.handleChange}
-                        />
-                    </div>
-                    <input 
-                        type="submit"
-                        value="Sign Up"
-                        className="btn btn-primary"
-                    />
-                    {errors.length > 0
-                    ? errors.map((errorMessage) => (
-                    <h5 key={errorMessage} className='error-message'>
-                    {errorMessage}
-                    </h5>
-                    ))
-                    : null}
-                </form>
+                        {errors.length > 0
+                        ? errors.map((errorMessage) => (
+                        <h5 key={errorMessage} className='error-message'>
+                        {errorMessage}
+                        </h5>
+                        ))
+                        : null}
+                    </form>
+                </div>
             </div>
             <div className='right-section'>
                 <img src={oktoberfest5} 
