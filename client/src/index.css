@@ -153,8 +153,8 @@ body {
   text-align: center;
   border: #5f506b solid 1px;
   padding: 1rem;
-  width: 40rem;
-  height: 60rem;
+  width: 45rem;
+  height: 65rem;
   display: center;
   margin: 1rem 2rem;
   box-shadow: 2px 2px 5px 2px #5f506b;
@@ -168,7 +168,7 @@ body {
 
 .single-tent-card-img-bottom {
   justify-self: center;
-  height: 15rem;
+  height: 20rem;
   width: auto;
 }
 
