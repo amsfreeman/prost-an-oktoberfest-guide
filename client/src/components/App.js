@@ -9,6 +9,7 @@ import TentsList from "./TentsList";
 import VisitsList from "./VisitsList";
 import NewVisitForm from "./NewVisitForm";
 import SingleTentDetail from "./SingleTentDetail";
+import Search from "./Search";
 import { UserContext } from "../context/user";
 
 
@@ -16,6 +17,8 @@ function App() {
   const [visitsArray, setVisitsArray] = useState([])
   const { setUser } = useContext(UserContext);
   const [ tents, setTents ] = useState([]);
+  const [ searchKeyword, setSearchKeyword ] = useState('');
+  const [ filteredVisits, setFilteredVisits ] = useState([])
 
   useEffect(() => {
     fetchTents();
@@ -43,11 +46,27 @@ function App() {
   const fetchVisits = () => {
     fetch('/oktoberfest_visits')
       .then(r => r.json())
-      .then(visits => setVisitsArray(visits))
+      .then(data => {
+        setVisitsArray(data);
+        setFilteredVisits(data);
+      })
   }
 
   function addNewVisit(newVisit) {
     setVisitsArray([...visitsArray, newVisit])
+  }
+
+  const handleSearchInputChange = (e) => {
+    const keyword = e.target.value.toLowerCase();
+    setSearchKeyword(keyword);
+    const filtered = visitsArray.filter(
+      (visit) =>
+        visit.tent.name.toLowerCase().includes(keyword) ||
+        visit.date.toLowerCase().includes(keyword) ||
+        visit.visit_rating.toString().includes(keyword) ||
+        visit.user.username.toLowerCase().includes(keyword)
+    );
+    setFilteredVisits(filtered)
   }
 
   return (
@@ -67,7 +86,8 @@ function App() {
           <SingleTentDetail />
         </Route>
         <Route path ='/oktoberfest_visits'>
-          <VisitsList visitsArray={visitsArray} tents={tents}/>
+          <Search searchKeyword={searchKeyword} handleSearchInputChange={handleSearchInputChange}/>
+          <VisitsList filteredVisits={filteredVisits} tents={tents}/>
         </Route>
         <Route path ='/oktoberfest_add_visit'>
           <NewVisitForm addNewVisit={addNewVisit}/>
