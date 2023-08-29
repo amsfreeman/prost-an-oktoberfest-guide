@@ -13,7 +13,7 @@ function SingleTentDetail() {
             setTent(data)
         }
         fetchTentData()
-    },[]) 
+    },[id]) 
 
     if (!tent || !tent.visits) {
         return <div>Loading...</div>;

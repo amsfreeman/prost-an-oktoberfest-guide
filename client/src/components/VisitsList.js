@@ -1,13 +1,14 @@
 import AllVisits from "./AllVisits"
 
-function VisitsList({filteredVisits, onDelete}) {
+function VisitsList({filteredVisits, onDelete, onEdit}) {
 
     const visitComponents = filteredVisits.map(visit => {
         return (
             <AllVisits 
                 key = {visit.id}
                 visit = {visit}
-                onDelete={onDelete}
+                onDelete = {onDelete}
+                onEdit = {onEdit}
                 />
         )
     })

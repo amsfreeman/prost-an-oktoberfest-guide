@@ -4,7 +4,7 @@ import { useFormik} from "formik";
 import * as yup from "yup";
 
 
-function AllVisits({visit, onDelete}) {
+function AllVisits({visit, onDelete, onEdit}) {
     const { user } = useContext(UserContext) 
     const [ showForm, setShowForm ] = useState(false)
 
@@ -36,15 +36,19 @@ function AllVisits({visit, onDelete}) {
             values.visit_rating = parseInt(values.visit_rating)
             values.tent_id = parseInt(values.tent_id)
             values.visit_id = visit.id
-            console.log(values)
-            fetch(`/oktoberfest_visits/${visit.id}`, {
+            setShowForm(!showForm)
+                fetch(`/oktoberfest_visits/${visit.id}`, {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
-            })
-            setShowForm(!showForm)
-        }
-    })
+                })
+                    .then(r => r.json())
+                    .then((updatedVisit) => {
+                        onEdit(visit.id, updatedVisit)
+                    })
+                }
+            }
+        )
     
     function handleDelete() {
         fetch(`/oktoberfest_visits/${visit.id}`, {
