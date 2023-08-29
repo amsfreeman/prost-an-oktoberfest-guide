@@ -18,7 +18,7 @@ function NavBar() {
 
     return (
         <nav className='nav-container'>
-            <div className='problem'>
+            <div>
             {user?
                 <ul className='ul'>
                     <li className='nav-links'><a href='/'>Home</a></li>

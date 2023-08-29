@@ -108,7 +108,12 @@ function App() {
           <SingleTentDetail />
         </Route>
         <Route path ='/oktoberfest_visits'>
-          <SearchAndSort searchKeyword={searchKeyword} handleSearchInputChange={handleSearchInputChange} sortOrder={sortOrder} handleSortChange={handleSortChange}/>
+          <SearchAndSort 
+            searchKeyword={searchKeyword} 
+            handleSearchInputChange={handleSearchInputChange} 
+            sortOrder={sortOrder}
+            handleSortChange={handleSortChange}
+          />
           <VisitsList filteredVisits={filteredVisits} tents={tents}/>
         </Route>
         <Route path ='/oktoberfest_add_visit'>
