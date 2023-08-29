@@ -373,8 +373,14 @@ body {
   padding-left: 150px;
   padding-right: 150px;
   color: #faf3e9;
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: center;
+}
+
+.main-visits-page-header-2{
+  padding-left: 150px;
+  padding-right: 150px;
+  color: #faf3e9;
+  text-align: center;
 }
 
 .main-visits-text{
@@ -382,8 +388,7 @@ body {
   padding-right: 150px;
   margin-bottom: 0px;
   color: #faf3e9;
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: center;
 }
 
 .search-sort-container {
@@ -394,23 +399,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: rgb(119, 53, 53) solid 1px;
+  /* border: rgb(119, 53, 53) solid 1px; */
 }
 
-.search-bar {
-  flex: 1;
+.search-bar-container {
+  display: flex;
   justify-content: center;
   align-items: center;
   color: #faf3e9;
+  flex: 1;
 }
 
-.sort-dropdown {
-  flex: 1;
+.sort-dropdown-container {
+  display: flex;
   justify-content: center;
   align-items: center;
   color: #faf3e9;
+  flex: 1;
 }
-
 
 .visits-list {
   text-align: center;
@@ -428,4 +434,5 @@ body {
 
 .btn-primary {
   margin-top: 20px;
+  margin-bottom: 5px;
 }

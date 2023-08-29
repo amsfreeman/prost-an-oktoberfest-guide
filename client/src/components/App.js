@@ -9,7 +9,7 @@ import TentsList from "./TentsList";
 import VisitsList from "./VisitsList";
 import NewVisitForm from "./NewVisitForm";
 import SingleTentDetail from "./SingleTentDetail";
-import Search from "./Search";
+import SearchAndSort from "./SearchAndSort";
 import { UserContext } from "../context/user";
 
 
@@ -108,7 +108,7 @@ function App() {
           <SingleTentDetail />
         </Route>
         <Route path ='/oktoberfest_visits'>
-          <Search searchKeyword={searchKeyword} handleSearchInputChange={handleSearchInputChange} sortOrder={sortOrder} handleSortChange={handleSortChange}/>
+          <SearchAndSort searchKeyword={searchKeyword} handleSearchInputChange={handleSearchInputChange} sortOrder={sortOrder} handleSortChange={handleSortChange}/>
           <VisitsList filteredVisits={filteredVisits} tents={tents}/>
         </Route>
         <Route path ='/oktoberfest_add_visit'>
