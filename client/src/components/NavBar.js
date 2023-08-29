@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link} from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/user';
 import prostLogo from '.././assets/prost-logo.png'
@@ -21,18 +21,18 @@ function NavBar() {
             <div>
             {user?
                 <ul className='ul'>
-                    <li className='nav-links'><a href='/'>Home</a></li>
-                    <li className='nav-links'><a href='/oktoberfest_about'>About</a></li>
-                    <li className='nav-links'><a href='/oktoberfest_tents'>All Tents</a></li>
-                    <li className='nav-links'><a href='/oktoberfest_visits'>Visits</a></li>
-                    <li className='nav-links'><a href='/oktoberfest_add_visit'>Add A Visit</a></li>
+                    <li className='nav-links'><Link to='/'>Home</Link></li>
+                    <li className='nav-links'><Link to='/oktoberfest_about'>About</Link></li>
+                    <li className='nav-links'><Link to='/oktoberfest_tents'>All Tents</Link></li>
+                    <li className='nav-links'><Link to='/oktoberfest_visits'>Visits</Link></li>
+                    <li className='nav-links'><Link to='/oktoberfest_add_visit'>Add A Visit</Link></li>
                 </ul>
             :
                 <ul className='ul'>
-                    <li className='nav-links'><a href='/'>Home</a></li>
-                    <li className='nav-links'><a href='/oktoberfest_about'>About</a></li>
-                    <li className='nav-links'><a href='/oktoberfest_tents'>All Tents</a></li>
-                    <li className='nav-links'><a href='/oktoberfest_visits'>Visits</a></li>
+                    <li className='nav-links'><Link to='/'>Home</Link></li>
+                    <li className='nav-links'><Link to='/oktoberfest_about'>About</Link></li>
+                    <li className='nav-links'><Link to='/oktoberfest_tents'>All Tents</Link></li>
+                    <li className='nav-links'><Link to='/oktoberfest_visits'>Visits</Link></li>
                 </ul>
             }
             </div>
@@ -42,12 +42,12 @@ function NavBar() {
             {user ? 
                 <ul className='ul'>
                     <li className='loggedin-links-1'><h6 className='logged-in-user'>Servus, <br /> {user.username}</h6></li>
-                    <li className='loggedin-links-2'><a href="/" className='signout-link' onClick={handleClick}>Logout</a></li>
+                    <li className='loggedin-links-2'><Link to="/" className='signout-link' onClick={handleClick}>Logout</Link></li>
                 </ul>
             :
                 <ul className='ul'>
-                    <li className='user-links-1'><a href='/sign_in' className='signin-link'>Sign In</a></li>
-                    <li className='user-links-2'><a href='/sign_up' className='signup-link'>Sign Up</a></li>
+                    <li className='user-links-1'><Link to='/sign_in' className='signin-link'>Sign In</Link></li>
+                    <li className='user-links-2'><Link to='/sign_up' className='signup-link'>Sign Up</Link></li>
                 </ul>
             }
         </nav>

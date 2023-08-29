@@ -30,14 +30,6 @@ class Users(Resource):
         return response
 api.add_resource(Users, '/users')
 
-class Tents(Resource):
-    def get(self):
-        tents = [t.to_dict() for t in Tent.query.all()]
-
-        response = make_response(tents, 200)
-        return response
-api.add_resource(Tents, '/oktoberfest_tents')
-
 class TentById(Resource):
     def get(self, id):
         tent = Tent.query.filter_by(id=id).first()
@@ -53,11 +45,6 @@ class TentById(Resource):
 api.add_resource(TentById, '/oktoberfest_tents/<int:id>')
 
 class Visits(Resource):
-    def get(self):
-        visits = [v.to_dict() for v in Visit.query.all()]
-
-        response = make_response(visits, 200)
-        return response
     
     def post(self):
         data = request.get_json()
@@ -125,6 +112,15 @@ class VisitById(Resource):
 
 api.add_resource(VisitById, '/oktoberfest_visits/<int:id>')
 
+@app.route('/tents_and_visits')
+def tents_and_visits():
+    tents = [t.to_dict() for t in Tent.query.all()]
+    visits = [v.to_dict() for v in Visit.query.all()]
+
+    response = make_response({'tents': tents, 'visits': visits}, 200)
+    return response
+
+
 #LOGIN the User
 @app.route('/login', methods=['POST'])
 def login():
@@ -151,7 +147,7 @@ def authorize():
         response = make_response(user.to_dict(), 200)
         return response
     except:
-        response = make_response({"Error": "User not found."}, 404)
+        response = make_response({}, 401)
         return response
     
 #LOGOUT the User

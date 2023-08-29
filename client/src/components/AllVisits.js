@@ -1,14 +1,12 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
-import { useHistory } from "react-router-dom";
 import { useFormik} from "formik";
 import * as yup from "yup";
 
 
-function AllVisits({visit}) {
+function AllVisits({visit, onDelete}) {
     const { user } = useContext(UserContext) 
     const [ showForm, setShowForm ] = useState(false)
-    const history = useHistory();
 
     const formSchema = yup.object().shape({
         visit_rating: yup
@@ -37,13 +35,14 @@ function AllVisits({visit}) {
             values.user_id = user.id
             values.visit_rating = parseInt(values.visit_rating)
             values.tent_id = parseInt(values.tent_id)
+            values.visit_id = visit.id
             console.log(values)
             fetch(`/oktoberfest_visits/${visit.id}`, {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
             })
-                history.go(0)
+            setShowForm(!showForm)
         }
     })
     
@@ -51,7 +50,7 @@ function AllVisits({visit}) {
         fetch(`/oktoberfest_visits/${visit.id}`, {
             method: "DELETE",
         })
-        history.go(0)
+        onDelete(visit.id)
     }
 
     return(

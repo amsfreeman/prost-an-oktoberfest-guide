@@ -21,38 +21,28 @@ function App() {
   const [ filteredVisits, setFilteredVisits ] = useState([]);
   const [ sortOrder, setSortOrder ] = useState('id');
 
-  useEffect(() => {
-    fetchTents();
-    fetchVisits();
-    fetchUser();
-  }, [])
-
-  const fetchTents = () => {
-    fetch('/oktoberfest_tents') 
-      .then((r) => {
-        if (r.ok) {
-          r.json().then((tents) => setTents(tents))
-        }
-      })
+  const handleVisitDelete = (deletedVisitId) => {
+    setFilteredVisits(prevVisits => prevVisits.filter(visit => visit.id !== deletedVisitId))
   }
 
-  const fetchUser = () => {
+  useEffect(() => {
+    fetch('/tents_and_visits') 
+      .then((r) => r.json())
+      .then((data) => {
+        setTents(data.tents);
+        setVisitsArray(data.visits);
+        setFilteredVisits(data.visits);
+      })
+        }, [])
+
+  useEffect(() => {
     fetch("/authorized")
       .then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
         }
       })
-  }  
-
-  const fetchVisits = () => {
-    fetch('/oktoberfest_visits')
-      .then(r => r.json())
-      .then(data => {
-        setVisitsArray(data);
-        setFilteredVisits(data);
-      })
-  }
+    } , [setUser])
 
   function addNewVisit(newVisit) {
     setVisitsArray([...visitsArray, newVisit])
@@ -114,7 +104,11 @@ function App() {
             sortOrder={sortOrder}
             handleSortChange={handleSortChange}
           />
-          <VisitsList filteredVisits={filteredVisits} tents={tents}/>
+          <VisitsList 
+            filteredVisits={filteredVisits} 
+            tents={tents}
+            onDelete={handleVisitDelete}
+          />
         </Route>
         <Route path ='/oktoberfest_add_visit'>
           <NewVisitForm addNewVisit={addNewVisit}/>
