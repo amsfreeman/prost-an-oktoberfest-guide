@@ -56,6 +56,7 @@ class Tent(db.Model, SerializerMixin):
     first_year = db.Column(db.Integer)
     beer_sold = db.Column(db.Integer)
     image = db.Column(db.String)
+    star_image = db.Column(db.String)
     details = db.Column(db.String)
 
     visits = db.relationship('Visit', back_populates='tent', cascade = 'all, delete-orphan')

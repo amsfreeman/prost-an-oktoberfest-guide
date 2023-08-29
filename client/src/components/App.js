@@ -9,6 +9,7 @@ import TentsList from "./TentsList";
 import VisitsList from "./VisitsList";
 import NewVisitForm from "./NewVisitForm";
 import SingleTentDetail from "./SingleTentDetail";
+import SearchAndSort from "./SearchAndSort";
 import { UserContext } from "../context/user";
 
 
@@ -16,39 +17,69 @@ function App() {
   const [visitsArray, setVisitsArray] = useState([])
   const { setUser } = useContext(UserContext);
   const [ tents, setTents ] = useState([]);
+  const [ searchKeyword, setSearchKeyword ] = useState('');
+  const [ filteredVisits, setFilteredVisits ] = useState([]);
+  const [ sortOrder, setSortOrder ] = useState('id');
+
+  const handleVisitDelete = (deletedVisitId) => {
+    setFilteredVisits(prevVisits => prevVisits.filter(visit => visit.id !== deletedVisitId))
+  }
 
   useEffect(() => {
-    fetchTents();
-    fetchVisits();
-    fetchUser();
-  }, [])
-
-  const fetchTents = () => {
-    fetch('/oktoberfest_tents') 
-      .then((r) => {
-        if (r.ok) {
-          r.json().then((tents) => setTents(tents))
-        }
+    fetch('/tents_and_visits') 
+      .then((r) => r.json())
+      .then((data) => {
+        setTents(data.tents);
+        setVisitsArray(data.visits);
+        setFilteredVisits(data.visits);
       })
-  }
-  const fetchUser = () => {
+        }, [])
+
+  useEffect(() => {
     fetch("/authorized")
       .then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
         }
       })
-  }  
-
-  const fetchVisits = () => {
-    fetch('/oktoberfest_visits')
-      .then(r => r.json())
-      .then(visits => setVisitsArray(visits))
-  }
+    } , [setUser])
 
   function addNewVisit(newVisit) {
     setVisitsArray([...visitsArray, newVisit])
   }
+
+  const handleSearchInputChange = (e) => {
+    const keyword = e.target.value.toLowerCase();
+    setSearchKeyword(keyword);
+  
+    const filtered = visitsArray.filter((visit) =>
+        visit.tent.name.toLowerCase().includes(keyword) ||
+        visit.date.toLowerCase().includes(keyword) ||
+        visit.visit_rating.toString().includes(keyword) ||
+        visit.user.username.toLowerCase().includes(keyword)
+      )
+    setFilteredVisits(filtered)
+  }
+
+  const handleSortChange = (newSortOrder) => {
+    setSortOrder(newSortOrder);
+
+    const sorted = [...filteredVisits].sort((a, b) => {
+      if (newSortOrder === 'id') {
+        return a.id - b.id;
+      } else if (newSortOrder === 'visit_rating') {
+        return b.visit_rating - a.visit_rating;
+      } else if (newSortOrder === 'tent_id') {
+        return a.tent_id - b.tent_id;
+      } else if (newSortOrder === 'user.username') {
+        return a.user.username.localeCompare(b.user.username);
+      } else if (newSortOrder === 'date') {
+        return new Date(b.date) - new Date(a.date);
+      }
+      return 0;
+    });
+    setFilteredVisits(sorted);
+  };
 
   return (
     <div className='App'>
@@ -67,7 +98,17 @@ function App() {
           <SingleTentDetail />
         </Route>
         <Route path ='/oktoberfest_visits'>
-          <VisitsList visitsArray={visitsArray} tents={tents}/>
+          <SearchAndSort 
+            searchKeyword={searchKeyword} 
+            handleSearchInputChange={handleSearchInputChange} 
+            sortOrder={sortOrder}
+            handleSortChange={handleSortChange}
+          />
+          <VisitsList 
+            filteredVisits={filteredVisits} 
+            tents={tents}
+            onDelete={handleVisitDelete}
+          />
         </Route>
         <Route path ='/oktoberfest_add_visit'>
           <NewVisitForm addNewVisit={addNewVisit}/>

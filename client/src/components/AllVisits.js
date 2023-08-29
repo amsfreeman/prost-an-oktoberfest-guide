@@ -1,14 +1,12 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
-import { useHistory } from "react-router-dom";
 import { useFormik} from "formik";
 import * as yup from "yup";
 
 
-function AllVisits({visit}) {
+function AllVisits({visit, onDelete}) {
     const { user } = useContext(UserContext) 
     const [ showForm, setShowForm ] = useState(false)
-    const history = useHistory();
 
     const formSchema = yup.object().shape({
         visit_rating: yup
@@ -37,13 +35,14 @@ function AllVisits({visit}) {
             values.user_id = user.id
             values.visit_rating = parseInt(values.visit_rating)
             values.tent_id = parseInt(values.tent_id)
+            values.visit_id = visit.id
             console.log(values)
             fetch(`/oktoberfest_visits/${visit.id}`, {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
             })
-                history.go(0)
+            setShowForm(!showForm)
         }
     })
     
@@ -51,7 +50,7 @@ function AllVisits({visit}) {
         fetch(`/oktoberfest_visits/${visit.id}`, {
             method: "DELETE",
         })
-        history.go(0)
+        onDelete(visit.id)
     }
 
     return(
@@ -73,69 +72,74 @@ function AllVisits({visit}) {
                             <button onClick={handleShowForm}>Edit Visit 🍺</button>
                             : null}
                             { showForm ? (
-                                <form onSubmit={formik.handleSubmit}>
-                                    <div>
-                                        <label>Date</label>
+                                <div className='d-flex justify-content-center'>
+                                    <form onSubmit={formik.handleSubmit}>
+                                        <div className='form-group'>
+                                            <label>Date:</label>
+                                            <input 
+                                                type="date"
+                                                name="date"
+                                                className='form-control'
+                                                value={formik.values.date}
+                                                onChange={formik.handleChange}
+                                            />
+                                        </div>
+                                        <div className='form-group'>
+                                            <label>Visit Rating:</label>
+                                            <select
+                                                type="select"
+                                                name="visit_rating"
+                                                className='form-control'
+                                                value={formik.values.visit_rating}
+                                                onChange={formik.handleChange}
+                                            >
+                                                <option value='' disabled>Select an Option:</option>
+                                                <option value='1'>1</option>
+                                                <option value='2'>2</option>
+                                                <option value='3'>3</option>
+                                                <option value='4'>4</option>
+                                                <option value='5'>5</option>
+                                            </select>
+                                        </div>
+                                        <div className='form-group'>
+                                            <label>Tent Visited:</label>
+                                            <select
+                                                type="select"
+                                                name="tent_id"
+                                                className='form-control'
+                                                value={formik.values.tent_id}
+                                                onChange={formik.handleChange}
+                                            >
+                                                <option value='' disabled>Select an Option:</option>
+                                                <option value='1'>Armbrustschützenzelt</option>
+                                                <option value='2'>Augustiner-Festhalle</option>
+                                                <option value='3'>Bräurosl</option>
+                                                <option value='4'>Fischer-Vroni</option>
+                                                <option value='5'>Käfer Wiesnschänke</option>
+                                                <option value='6'>Hacker-Festzelt</option>
+                                                <option value='7'>Hofbräu-Festzelt</option>
+                                                <option value='8'>Löwenbräu-Festzelt</option>
+                                                <option value='9'>Marstall-Festzelt</option>
+                                                <option value='10'>Ochsenbraterei</option>
+                                                <option value='11'>Schottenhamel-Festhalle</option>
+                                                <option value='12'>Schützenfestzelt</option>
+                                                <option value='13'>Weinzelt</option>
+                                                <option value='14'>Winzerer Fähndl (Paulaner Festzelt)</option>
+                                            </select>
+                                        </div>
                                         <input 
-                                            type="date"
-                                            name="date"
-                                            value={formik.values.date}
-                                            onChange={formik.handleChange}
+                                            type="submit"
+                                            value="Edit Visit!"
+                                            className="btn btn-primary"
                                         />
-                                    </div>
-                                    <div>
-                                        <label>Visit Rating</label>
-                                        <select
-                                            type="select"
-                                            name="visit_rating"
-                                            value={formik.values.visit_rating}
-                                            onChange={formik.handleChange}
-                                        >
-                                            <option value='' disabled>Select an Option:</option>
-                                            <option value='1'>1</option>
-                                            <option value='2'>2</option>
-                                            <option value='3'>3</option>
-                                            <option value='4'>4</option>
-                                            <option value='5'>5</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label>Tent Visited</label>
-                                        <select
-                                            type="select"
-                                            name="tent_id"
-                                            value={formik.values.tent_id}
-                                            onChange={formik.handleChange}
-                                        >
-                                            <option value='' disabled>Select an Option:</option>
-                                            <option value='1'>Armbrustschützenzelt</option>
-                                            <option value='2'>Augustiner-Festhalle</option>
-                                            <option value='3'>Bräurosl</option>
-                                            <option value='4'>Fischer-Vroni</option>
-                                            <option value='5'>Käfer Wiesnschänke</option>
-                                            <option value='6'>Hacker-Festzelt</option>
-                                            <option value='7'>Hofbräu-Festzelt</option>
-                                            <option value='8'>Löwenbräu-Festzelt</option>
-                                            <option value='9'>Marstall-Festzelt</option>
-                                            <option value='10'>Ochsenbraterei</option>
-                                            <option value='11'>Schottenhamel-Festhalle</option>
-                                            <option value='12'>Schützenfestzelt</option>
-                                            <option value='13'>Weinzelt</option>
-                                            <option value='14'>Winzerer Fähndl (Paulaner Festzelt)</option>
-                                        </select>
-                                    </div>
-                                    <input 
-                                        type="submit"
-                                        value="Edit Visit!"
-                                        className="btn btn-primary"
-                                    />
-                                    {formik.submitCount > 0 && formik.errors.visit_rating ? (
-                                        <p className='yup-error-edit'>{formik.errors.visit_rating}</p>
-                                    ) : null}
-                                    {formik.submitCount > 0 && formik.errors.tent_id ? (
-                                        <p className='yup-error-edit'>{formik.errors.tent_id}</p>
-                                    ): null }
-                                </form>
+                                        {formik.submitCount > 0 && formik.errors.visit_rating ? (
+                                            <p className='yup-error-edit'>{formik.errors.visit_rating}</p>
+                                        ) : null}
+                                        {formik.submitCount > 0 && formik.errors.tent_id ? (
+                                            <p className='yup-error-edit'>{formik.errors.tent_id}</p>
+                                        ): null }
+                                    </form>
+                                </div>
                                 ) : null }
                         </div>
                         <div className="delete-visit">

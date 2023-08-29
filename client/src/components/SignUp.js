@@ -13,8 +13,9 @@ function SignUp() {
 
     const formSchema = yup.object().shape({
         username: yup.string().required("Username is required to sign up"),
+        email: yup.string().email("Email with email format is Required to sign up"),
         password: yup.string().required("Password is required to sign up"),
-        email: yup.string().email()
+        age: yup.string().required("Age is required to sign up."),
     });
 
     const formik = useFormik({
@@ -66,8 +67,12 @@ function SignUp() {
                                 name="username"
                                 className='form-control'
                                 value={formik.values.username}
+                                onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                             />
+                            {formik.touched.username && formik.errors.username && (
+                                <div>{formik.errors.username}</div>
+                            )}
                         </div>
                         <div className='form-group'>
                             <label>Email: </label>
@@ -76,8 +81,12 @@ function SignUp() {
                                 name="email"
                                 className='form-control'
                                 value={formik.values.email}
+                                onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                             />
+                            {formik.touched.email && formik.errors.email && (
+                                <div>{formik.errors.email}</div>
+                            )}
                         </div>
                         <div className='form-group'>
                             <label>Password: </label>
@@ -86,8 +95,12 @@ function SignUp() {
                                 name="password"
                                 className='form-control'
                                 value={formik.values.password}
+                                onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                             />
+                            {formik.touched.password && formik.errors.password && (
+                                <div>{formik.errors.password}</div>
+                            )}
                         </div>
                         <div className='form-group'>
                             <label>Age: </label>
@@ -96,8 +109,12 @@ function SignUp() {
                                 name="age"
                                 className='form-control'
                                 value={formik.values.age}
+                                onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                             />
+                            {formik.touched.age && formik.errors.age && (
+                                <div>{formik.errors.age}</div>
+                            )}
                         </div>
                         <input 
                             type="submit"
