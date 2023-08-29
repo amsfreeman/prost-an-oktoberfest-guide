@@ -4,19 +4,19 @@ import { useFormik} from "formik";
 import * as yup from "yup";
 
 
-function AllVisits({visit, onDelete}) {
+function AllVisits({visit, onDelete, onEdit}) {
     const { user } = useContext(UserContext) 
     const [ showForm, setShowForm ] = useState(false)
 
     const formSchema = yup.object().shape({
-        visit_rating: yup
-            .mixed()
-            .oneOf(['1', '2', '3', '4', '5'], 'Please select a valid option')
-            .required("Rating is required to create a visit."),
         tent_id: yup
             .mixed()
-            .oneOf(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14'], 'Please select a valid option.')
-            .required("Tent is required to create a visit.")
+            .oneOf(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14'], 'Please select a valid tent name.')
+            .required("Tent is required to create a visit."),
+        visit_rating: yup
+            .mixed()
+            .oneOf(['1', '2', '3', '4', '5'], 'Please select a valid rating.')
+            .required("Rating is required to create a visit.")
     });
 
     const handleShowForm = () => {
@@ -25,26 +25,28 @@ function AllVisits({visit, onDelete}) {
 
     const formik = useFormik({
         initialValues : {
-            date: "",
-            visit_rating: '',
-            tent_id: '',
+            date: visit.date,
+            visit_rating: visit.visit_rating,
+            tent_id: visit.tent.name,
             user_id: {user}.id,
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            values.user_id = user.id
             values.visit_rating = parseInt(values.visit_rating)
             values.tent_id = parseInt(values.tent_id)
-            values.visit_id = visit.id
-            console.log(values)
-            fetch(`/oktoberfest_visits/${visit.id}`, {
+            setShowForm(!showForm)
+                fetch(`/oktoberfest_visits/${visit.id}`, {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(values)
-            })
-            setShowForm(!showForm)
-        }
-    })
+                })
+                    .then(r => r.json())
+                    .then((updatedVisit) => {
+                        onEdit(visit.id, updatedVisit)
+                    })
+                }
+            }
+        )
     
     function handleDelete() {
         fetch(`/oktoberfest_visits/${visit.id}`, {
@@ -75,33 +77,6 @@ function AllVisits({visit, onDelete}) {
                                 <div className='d-flex justify-content-center'>
                                     <form onSubmit={formik.handleSubmit}>
                                         <div className='form-group'>
-                                            <label>Date:</label>
-                                            <input 
-                                                type="date"
-                                                name="date"
-                                                className='form-control'
-                                                value={formik.values.date}
-                                                onChange={formik.handleChange}
-                                            />
-                                        </div>
-                                        <div className='form-group'>
-                                            <label>Visit Rating:</label>
-                                            <select
-                                                type="select"
-                                                name="visit_rating"
-                                                className='form-control'
-                                                value={formik.values.visit_rating}
-                                                onChange={formik.handleChange}
-                                            >
-                                                <option value='' disabled>Select an Option:</option>
-                                                <option value='1'>1</option>
-                                                <option value='2'>2</option>
-                                                <option value='3'>3</option>
-                                                <option value='4'>4</option>
-                                                <option value='5'>5</option>
-                                            </select>
-                                        </div>
-                                        <div className='form-group'>
                                             <label>Tent Visited:</label>
                                             <select
                                                 type="select"
@@ -126,6 +101,33 @@ function AllVisits({visit, onDelete}) {
                                                 <option value='13'>Weinzelt</option>
                                                 <option value='14'>Winzerer Fähndl (Paulaner Festzelt)</option>
                                             </select>
+                                        </div>
+                                        <div className='form-group'>
+                                            <label>Visit Rating:</label>
+                                            <select
+                                                type="select"
+                                                name="visit_rating"
+                                                className='form-control'
+                                                value={formik.values.visit_rating}
+                                                onChange={formik.handleChange}
+                                            >
+                                                <option value='' disabled>Select an Option:</option>
+                                                <option value='1'>1</option>
+                                                <option value='2'>2</option>
+                                                <option value='3'>3</option>
+                                                <option value='4'>4</option>
+                                                <option value='5'>5</option>
+                                            </select>
+                                        </div>
+                                        <div className='form-group'>
+                                            <label>Date:</label>
+                                            <input 
+                                                type="date"
+                                                name="date"
+                                                className='form-control'
+                                                value={formik.values.date}
+                                                onChange={formik.handleChange}
+                                            />
                                         </div>
                                         <input 
                                             type="submit"

@@ -25,6 +25,13 @@ function App() {
     setFilteredVisits(prevVisits => prevVisits.filter(visit => visit.id !== deletedVisitId))
   }
 
+  const handleVisitEdit = (editedVisitId, updatedVisitData) => {
+    setFilteredVisits((allVisits) => allVisits.map((visit) => 
+      visit.id === editedVisitId ? updatedVisitData : visit
+    ))
+  }
+
+
   useEffect(() => {
     fetch('/tents_and_visits') 
       .then((r) => r.json())
@@ -108,6 +115,7 @@ function App() {
             filteredVisits={filteredVisits} 
             tents={tents}
             onDelete={handleVisitDelete}
+            onEdit={handleVisitEdit}
           />
         </Route>
         <Route path ='/oktoberfest_add_visit'>
