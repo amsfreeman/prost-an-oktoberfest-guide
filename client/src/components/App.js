@@ -18,7 +18,8 @@ function App() {
   const { setUser } = useContext(UserContext);
   const [ tents, setTents ] = useState([]);
   const [ searchKeyword, setSearchKeyword ] = useState('');
-  const [ filteredVisits, setFilteredVisits ] = useState([])
+  const [ filteredVisits, setFilteredVisits ] = useState([]);
+  const [ sortOrder, setSortOrder ] = useState('id');
 
   useEffect(() => {
     fetchTents();
@@ -34,6 +35,7 @@ function App() {
         }
       })
   }
+
   const fetchUser = () => {
     fetch("/authorized")
       .then((r) => {
@@ -59,15 +61,35 @@ function App() {
   const handleSearchInputChange = (e) => {
     const keyword = e.target.value.toLowerCase();
     setSearchKeyword(keyword);
-    const filtered = visitsArray.filter(
-      (visit) =>
+  
+    const filtered = visitsArray.filter((visit) =>
         visit.tent.name.toLowerCase().includes(keyword) ||
         visit.date.toLowerCase().includes(keyword) ||
         visit.visit_rating.toString().includes(keyword) ||
         visit.user.username.toLowerCase().includes(keyword)
-    );
+      )
     setFilteredVisits(filtered)
   }
+
+  const handleSortChange = (newSortOrder) => {
+    setSortOrder(newSortOrder);
+
+    const sorted = [...filteredVisits].sort((a, b) => {
+      if (newSortOrder === 'id') {
+        return a.id - b.id;
+      } else if (newSortOrder === 'visit_rating') {
+        return b.visit_rating - a.visit_rating;
+      } else if (newSortOrder === 'tent_id') {
+        return a.tent_id - b.tent_id;
+      } else if (newSortOrder === 'user.username') {
+        return a.user.username.localeCompare(b.user.username);
+      } else if (newSortOrder === 'date') {
+        return new Date(b.date) - new Date(a.date);
+      }
+      return 0;
+    });
+    setFilteredVisits(sorted);
+  };
 
   return (
     <div className='App'>
@@ -86,7 +108,7 @@ function App() {
           <SingleTentDetail />
         </Route>
         <Route path ='/oktoberfest_visits'>
-          <Search searchKeyword={searchKeyword} handleSearchInputChange={handleSearchInputChange}/>
+          <Search searchKeyword={searchKeyword} handleSearchInputChange={handleSearchInputChange} sortOrder={sortOrder} handleSortChange={handleSortChange}/>
           <VisitsList filteredVisits={filteredVisits} tents={tents}/>
         </Route>
         <Route path ='/oktoberfest_add_visit'>

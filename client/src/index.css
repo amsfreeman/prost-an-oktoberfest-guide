@@ -328,6 +328,11 @@ body {
   text-align: center;
 }
 
+.new-visit-title {
+  color: #faf3e9;
+  text-align: center;
+}
+
 .layout-container {
   display: flex;
   justify-content: space-between;
@@ -362,7 +367,7 @@ body {
   text-justify: inter-word;
 }
 
-.main-vists-page-header{
+.main-visits-page-header{
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 150px;
@@ -371,6 +376,41 @@ body {
   text-align: justify;
   text-justify: inter-word;
 }
+
+.main-visits-text{
+  padding-left: 150px;
+  padding-right: 150px;
+  margin-bottom: 0px;
+  color: #faf3e9;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.search-sort-container {
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: rgb(119, 53, 53) solid 1px;
+}
+
+.search-bar {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  color: #faf3e9;
+}
+
+.sort-dropdown {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  color: #faf3e9;
+}
+
 
 .visits-list {
   text-align: center;
