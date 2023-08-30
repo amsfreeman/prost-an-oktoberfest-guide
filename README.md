@@ -2,7 +2,7 @@
 
 # Prost! An Oktoberfest Guide
 
-Welcome to this Oktoberfest Guide! See all the large tents at Oktoberfest, and previous visits made. Login to add your own visit!
+Welcome to this Oktoberfest Guide! See all the large tents at Oktoberfest, details about the tents, and previous visits made. Login to add your own visit!
 
 ---
 
