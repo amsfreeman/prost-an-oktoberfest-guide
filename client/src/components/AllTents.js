@@ -2,7 +2,6 @@ import { useHistory } from "react-router-dom"
 
 function AllTents({id, name, image}) {
     const history = useHistory()
-
     function handleClick() {
         history.push(`/oktoberfest_tents/${id}`)
     }

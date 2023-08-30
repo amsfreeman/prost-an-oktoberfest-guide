@@ -31,7 +31,6 @@ function App() {
     ))
   }
 
-
   useEffect(() => {
     fetch('/tents_and_visits') 
       .then((r) => r.json())

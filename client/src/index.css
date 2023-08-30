@@ -205,7 +205,6 @@ body {
 }
 
 .visit-card-container{
-  /* border: rgb(119, 53, 53) solid 1px; */
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
