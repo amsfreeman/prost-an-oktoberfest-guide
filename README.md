@@ -1,3 +1,5 @@
+<img src="client/src/assets/prost-logo.png" alt="Logo" width="200" height="200">
+
 # Prost! An Oktoberfest Guide
 
 Welcome to this Oktoberfest Guide! See all the large tents at Oktoberfest, and previous visits made. Login to add your own visit!
@@ -19,11 +21,15 @@ On the home page you will see a picture of Oktoberfest and two navigation bars. 
 ### Installing 
 
 - Clone from https://github.com/amsfreeman/prost-an-oktoberfest-guide
-- Run npm install
-- Run pipenv install
-- Enter shell with pipenv shell
-- Open one server and cd into the server, then run python app.py
-- Open another server and cd into the client, then run npm start
+- cd into the client side
+    - Run npm install 
+- cd back to top level
+    - Run pipenv install
+    - Enter shell by running pipenv shell
+- Open one server and cd into the server
+    -   Run python app.py
+- Open another server and cd into the client
+    - Run npm start
 
 ---
 ## Authors
@@ -49,6 +55,49 @@ On the home page you will see a picture of Oktoberfest and two navigation bars. 
 - Schützenfestzelt: https://oktoberfest-guide.com/site/assets/files/2110/schutzenfestzelt-fassde-seitlich-bavaria-totale.1920x0.jpg
 - Weinzelt: https://www.oktoberfest.de/site/assets/files/1471/kufflers_weinzelt_fassade_sebastian_lehner-07421.-landscape.jpg
 - Winzerer Fähndl (Paulaner Festzelt): https://paulanerfestzelt.de/wp-content/uploads/2019/11/paulaner-fest-tent.jpg
+
+### Sources for Armbrustschützenzelt
+- Source for Data Info: https://oktoberfest-guide.com/tents/armbrustschutzenzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/armbrustschuetzenzelt
+### Sources for Augustiner-Festhalle 
+- Source for Data Info: https://oktoberfest-guide.com/tents/augustiner-festhalle/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/augustiner-festhalle
+### Sources for Bräurosl
+- Source for Data Info: https://oktoberfest-guide.com/tents/braurosl/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/pschorr-braeurosl
+### Sources for Fischer-Vroni
+- Source for Data Info: https://oktoberfest-guide.com/tents/fischer-vroni/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/fischer-vroni
+### Sources for Hacker-Festzelt
+- Source for Data Info: https://oktoberfest-guide.com/tents/hacker-festzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/hacker-festzelt
+### Sources for Hofbräu-Festzelt 
+- Source for Data Info: https://oktoberfest-guide.com/tents/hofbrau-festzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/hofbraeu-festzelt
+### Sources for Käfer Wiesnschänke
+- Source for Data Info: https://oktoberfest-guide.com/tents/kafer-wiesn-schaenke/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/kaefer-wiesn-schaenke
+### Sources for Löwenbräu-Festzelt
+- Source for Data Info: https://oktoberfest-guide.com/tents/lowenbrau-festzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/loewenbraeu-festzelt
+### Sources for Marstall-Festzelt
+- Source for Data Info: https://oktoberfest-guide.com/tents/marstall-festzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/marstall-festzelt
+### Sources for Ochsenbraterei 
+- Source for Data Info: https://oktoberfest-guide.com/tents/ochsenbraterei/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/ochsenbraterei
+### Sources for Schottenhamel-Festhalle 
+- Source for Data Info: https://oktoberfest-guide.com/tents/schottenhamel/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/schottenhamel-festhalle
+### Sources for Schützenfestzelt 
+- Source for Data Info: https://oktoberfest-guide.com/tents/schutzenfestzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/schuetzen-festzelt
+### Sources for Weinzelt 
+- Source for Data Info: https://oktoberfest-guide.com/tents/weinzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/kufflers-wine-tent
+### Sources for Winzerer Fähndl (Paulaner Festzelt)
+- Source for Data Info: https://oktoberfest-guide.com/tents/winzerer-fahndl-paulaner-festzelt/
+- Source for Tent Details: https://www.oktoberfest.de/en/beer-tents/big-tents/paulaner-festzelt
 
 ### Other Sources: 
 - Credit for the favicon to: https://favicon.io/favicon-converter/

@@ -154,7 +154,7 @@ body {
   border: #5f506b solid 1px;
   padding: 1rem;
   width: 45rem;
-  height: 65rem;
+  height: 70rem;
   display: center;
   margin: 1rem 2rem;
   box-shadow: 2px 2px 5px 2px #5f506b;
@@ -397,7 +397,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: rgb(119, 53, 53) solid 1px; */
 }
 
 .search-bar-container {
