@@ -2,7 +2,7 @@
 
 # Prost! An Oktoberfest Guide
 
-Welcome to this Oktoberfest Guide! See all the large tents at Oktoberfest, and previous visits made. Login to add your own visit!
+Welcome to this Oktoberfest Guide! See all the large tents at Oktoberfest, details about the tents, and previous visits made. Login to add your own visit!
 
 ---
 
@@ -24,6 +24,8 @@ On the home page you will see a picture of Oktoberfest and two navigation bars. 
 - cd into the client side
     - Run npm install 
 - cd back to top level
+    - Make sure you are using pipenv 3.8.13
+        - If not, type pipenv 3.18.13 to use that version
     - Run pipenv install
     - Enter shell by running pipenv shell
 - Open one server and cd into the server
