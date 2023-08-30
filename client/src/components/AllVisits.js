@@ -27,7 +27,7 @@ function AllVisits({visit, onDelete, onEdit}) {
         initialValues : {
             date: visit.date,
             visit_rating: visit.visit_rating,
-            tent_id: visit.tent.name,
+            tent_id: visit.tent_id,
             user_id: {user}.id,
         },
         validationSchema: formSchema,

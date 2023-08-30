@@ -78,5 +78,3 @@ class Visit(db.Model, SerializerMixin):
     tent = db.relationship('Tent', back_populates='visits')
 
     serialize_rules = ("-user.visits", "-tent.visits")
-
-
