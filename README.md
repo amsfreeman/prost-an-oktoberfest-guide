@@ -36,10 +36,6 @@ The visit model includes an id, visit rating, date, user id, and tent id. This m
 - cd into where you want the project to be
 - Git clone the repository:
     - `git clone https://github.com/amsfreeman/prost-an-oktoberfest-guide`
-- Open vsCode by typing `code .`
-- Open a terminal
-- Make sure you are using `pyenv 3.8.13`
-    - If not, type `pyenv 3.18.13` to use that version
 - In this top directory:
     - Run `pipenv install`
 - cd into the `client` side:
@@ -54,7 +50,7 @@ The visit model includes an id, visit rating, date, user id, and tent id. This m
 ---
 ## Authors
 
-- Amelia Freeman (GitHub.com/amsfreeman)
+- Amelia Freeman (Linkedin.com/in/amelia-k-freeman/)
 
 ---
 ## Acknowledgements
