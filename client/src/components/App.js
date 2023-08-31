@@ -32,26 +32,6 @@ function App() {
   }
 
   useEffect(() => {
-    if (searchKeyword === '') {
-      fetch('/tents_and_visits')
-        .then((response) => response.json())
-        .then((data) => {
-          setVisitsArray(data.visits);
-        })
-    }
-  }, [searchKeyword])
-
-  useEffect(() => {
-    if (sortOrder !== '') {
-      fetch('tents_and_visits')
-        .then((response) => response.json())
-        .then((data) => {
-          setVisitsArray(data.visits);
-        })
-    }
-  }, [sortOrder]);
-
-  useEffect(() => {
     fetch('/tents_and_visits') 
       .then((r) => r.json())
       .then((data) => {
@@ -69,6 +49,26 @@ function App() {
         }
       })
     } , [setUser])
+
+    useEffect(() => {
+      if (searchKeyword === '') {
+        fetch('/tents_and_visits')
+          .then((response) => response.json())
+          .then((data) => {
+            setVisitsArray(data.visits);
+          })
+      }
+    }, [searchKeyword])
+
+    useEffect(() => {
+      if (sortOrder !== '') {
+        fetch('tents_and_visits')
+          .then((response) => response.json())
+          .then((data) => {
+            setVisitsArray(data.visits);
+          })
+      }
+    }, [sortOrder]);
 
   function addNewVisit(newVisit) {
     setVisitsArray([...visitsArray, newVisit])
@@ -89,7 +89,6 @@ function App() {
 
   const handleSortChange = (newSortOrder) => {
     setSortOrder(newSortOrder);
-
     const sorted = [...filteredVisits].sort((a, b) => {
       if (newSortOrder === 'id') {
         return a.id - b.id;
