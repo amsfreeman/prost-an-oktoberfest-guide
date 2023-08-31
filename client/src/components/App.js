@@ -32,6 +32,26 @@ function App() {
   }
 
   useEffect(() => {
+    if (searchKeyword === '') {
+      fetch('/tents_and_visits')
+        .then((response) => response.json())
+        .then((data) => {
+          setVisitsArray(data.visits);
+        })
+    }
+  }, [searchKeyword])
+
+  useEffect(() => {
+    if (sortOrder !== '') {
+      fetch('tents_and_visits')
+        .then((response) => response.json())
+        .then((data) => {
+          setVisitsArray(data.visits);
+        })
+    }
+  }, [sortOrder]);
+
+  useEffect(() => {
     fetch('/tents_and_visits') 
       .then((r) => r.json())
       .then((data) => {
@@ -39,7 +59,7 @@ function App() {
         setVisitsArray(data.visits);
         setFilteredVisits(data.visits);
       })
-        }, [])
+        }, [setFilteredVisits])
 
   useEffect(() => {
     fetch("/authorized")

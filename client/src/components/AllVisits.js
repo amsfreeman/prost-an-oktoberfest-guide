@@ -90,9 +90,9 @@ function AllVisits({visit, onDelete, onEdit}) {
                                                 <option value='2'>Augustiner-Festhalle</option>
                                                 <option value='3'>Bräurosl</option>
                                                 <option value='4'>Fischer-Vroni</option>
-                                                <option value='5'>Käfer Wiesnschänke</option>
-                                                <option value='6'>Hacker-Festzelt</option>
-                                                <option value='7'>Hofbräu-Festzelt</option>
+                                                <option value='5'>Hacker-Festzelt</option>
+                                                <option value='6'>Hofbräu-Festzelt</option>
+                                                <option value='7'>Käfer Wiesnschänke</option>
                                                 <option value='8'>Löwenbräu-Festzelt</option>
                                                 <option value='9'>Marstall-Festzelt</option>
                                                 <option value='10'>Ochsenbraterei</option>

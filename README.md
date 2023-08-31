@@ -42,8 +42,9 @@ The visit model includes an id, visit rating, date, user id, and tent id. This m
     - If not, type `pyenv 3.18.13` to use that version
 - In this top directory:
     - Run `pipenv install`
-- cd cd into the `client` side:
+- cd into the `client` side:
     - Run `npm install`
+- cd back to the top directory:
     - Run `pipenv shell`
 - Open another terminal and cd into `server` side:
     -   Run `python app.py`
